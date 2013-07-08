@@ -1,0 +1,42 @@
+
+GSSAPIAuthentication no
+StrictHostKeyChecking no
+
+Host brunson.com
+	Port 222
+	User brunson
+	ForwardX11 no
+
+Host salt
+	HostName abait18-lnx
+
+Host home
+	HostName 76.120.106.35
+	Port 222
+	User brunson
+
+Host git-android-bldr.quicinc.com
+	Port 29418
+	ForwardX11 no
+
+Host review-android.quicinc.com
+	Hostname review-android.quicinc.com
+	Port 29418
+	ForwardX11 no
+
+Host review
+	Hostname review-android.quicinc.com
+	Port 29418
+	ForwardX11 no
+
+Host quic
+	Hostname git.quicinc.com
+	ForwardX11 no
+
+Host csd
+	Hostname abaitci609-sd-lnx
+
+Host cml
+	Hostname abaitci610-sd-lnx
+
+
