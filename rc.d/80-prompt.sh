@@ -16,7 +16,8 @@ colorize() {
     echo "\e[$@]\e[m"
 }
 
-if [ "$USER" = 'ebrunson' ]
+debug $USER $(basename $HOME)
+if [ "$USER" = $(basename $HOME) ]
 then
 	PS1='-\n\h(\w$(__git_ps1 "[%s]"))\n\$ '
 else
