@@ -39,4 +39,20 @@ Host csd
 Host cml
 	Hostname abaitci610-sd-lnx
 
+Host alpha
+	User admin
+
+Host lima
+	User root
+	Port 2222
+
+Host l
+	User root
+	Port 2222
+
+Host b
+	User root
+
+Host 192.168.1.2
+	User root
 
