@@ -1,0 +1,11 @@
+#!/bin/bash -p
+
+DIR=.dotfiles
+
+cd ~/$DIR
+for file in *; do
+    if [[ -f $file ]] ; then
+	path=$(echo $file | tr _ /)
+	echo ln -s ~/$DIR/$file ~/.$path
+    fi
+done
