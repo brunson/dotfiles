@@ -46,23 +46,31 @@ SHOSTS="$SBHOSTS,$SCHOSTS"
 #All Hosts
 ALLHOSTS="$BHOSTS,$SHOSTS"
 
+iter() {
+    vars=($@)
+    for var in ${vars[@]} ; do
+	echo ${!var}
+    done
+}
+
 hosts() {
-    echo $@ | tr ',' '\n' 
+    iter $@ | tr ',' '\n' 
 }
 
 dhosts() {
-    hosts $@ | sed -e 's/lnx/lnx_droid_host/'
+    iter $@ | sed -e 's/lnx/lnx_droid_host/'
 }
 
 fqhosts() {
-    hosts $@ | sed -e 's/lnx/lnx.qualcomm.com/'
+    iter $@ | sed -e 's/lnx/lnx.qualcomm.com/'
 }
 
 pack() {
-    tr '\n' ',' | sed 's/,$/\n/'
+    delim=${1:- }
+    tr '\n' "$delim" | sed -e "s/$delim\$/\n/"
 }
 
 pfqhosts() {
-    fqhosts $@ | pack
+    fqhosts $@ | pack ,
 }
 
