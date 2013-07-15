@@ -14,7 +14,7 @@ function expand()
 }
 
 #Current Batch
-HOSTS="$( seq 152 160 )"
+HOSTS="41 46 49 53 55 60 63 75 80 81 116 119 123 132 133"
 CURHOSTS=$(expand abait%-lnx $HOSTS)
 
 #Boulder Build Hosts
