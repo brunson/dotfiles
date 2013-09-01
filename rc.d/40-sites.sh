@@ -1,6 +1,8 @@
 # -*-sh-*-
 debug .bash/sites.sh
 
+if [ $( hostname ) = 'ebrunson-lnx' ] ; then
+
 function expand() 
 {
     format=$1 ; shift
@@ -45,6 +47,8 @@ SHOSTS="$SBHOSTS,$SCHOSTS"
 
 #All Hosts
 ALLHOSTS="$BHOSTS,$SHOSTS"
+
+fi
 
 hosts() {
     echo $@ | tr ',' '\n' 
