@@ -15,6 +15,7 @@ umask 022
 
 alias j='jobs -l'
 alias clear=/usr/bin/clear
+alias lgit='sudo -u lnxbuild git'
 alias setdate='date `date +%y%m%d%H%m`'
 alias more=less
 alias trcrt="traceroute -q 1 -w 2"

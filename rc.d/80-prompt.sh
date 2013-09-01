@@ -25,3 +25,6 @@ else
 	PS1='-\n\u@\h(\w$(__git_ps1 "[%s]"))\n\$ '
 fi
 
+ungit() {
+    PS1='-\n\h(\w)\n\$ '
+}
