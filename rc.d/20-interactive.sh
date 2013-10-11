@@ -20,6 +20,7 @@ alias setdate='date `date +%y%m%d%H%m`'
 alias more=less
 alias trcrt="traceroute -q 1 -w 2"
 alias fixmp3names='rename "s/ /_/g ; s/_-_/-/g ; s/-_/-/g ; s/_-/-/g ; s/--*/-/g ; tr/A-Z/a-z/ ; s/%([1-9][0-9])/unpack('\''c'\'',)/g"'
+alias hclock='TZ=Asia/Calcutta xclock -analog -name Hyderabad'
 
 function gmt
 {
@@ -154,12 +155,17 @@ function sld
 
 function ffh 
 { 
-    find ~ -name "*$1*" -print 
+    find ~ -name "*$1*" -print
 }
 
-function ff()
+function ff
 { 
-    find . -name .snapshot -prune -o -name "*$1*" -print 
+    find . -name .snapshot -prune -o -name "*$1*" -print
+}
+
+function ff0
+{ 
+    find . -name .snapshot -prune -o -name "*$1*" -print0
 }
 
 # find file, exec GREP with arg
@@ -168,12 +174,19 @@ function ff()
 #       home dir version
 function fgh 
 { 
-    if [ "$1" ]; then find ~ -type f -exec grep -s $1 {} \; -print ; fi 
+    if [ "$1" ]; then find ~ -type f -exec grep -Hs $1 {} \; -print ; fi 
 }
+
 #       current dir version 
 function fgr 
 { 
-    if [ "$1" ]; then find . -type f -exec grep -s $1 {} \; -print ; fi 
+    if [ "$1" ]; then find . -type f -exec grep -Hs $1 {} \; -print ; fi 
+}
+
+#       current dir version 
+function fgw 
+{ 
+    if [ "$1" ]; then find . -type f -exec grep -wHs $1 {} \; -print ; fi 
 }
 
 # find verbose

@@ -20,8 +20,8 @@ function expand()
 #BCURHOSTS=$(expand abait%-lnx $HOSTS)
 
 #Current Batch
-HOSTS="$(seq 169 184)"
-SCURHOSTS=$(expand abait%-sd-lnx $HOSTS)
+HOSTS="$(seq 01 08)"
+SCURHOSTS=$(expand abait0%-sd-lnx $HOSTS)
 
 #Boulder Build Hosts
 HOSTS="10 $( seq 13 19 ) $( seq 21 24 ) 28 29 30 35 39 $( seq 41 47 ) $( seq 49 57 ) $( seq 60 67 ) $( seq 69 72 ) $( seq 75 84 ) 86 87 89 $( seq 92 97 ) $( seq 100 116 ) $( seq 118 124 ) $( seq 127 134 ) 140 141 142 144 148 $( seq 150 160 )"
