@@ -8,12 +8,14 @@ fi
 
 case "$-" in
     *i*) stty erase 
+         set -o ignoreeof 4
 	;;
 esac
 
 umask 022
 
 alias j='jobs -l'
+alias ls='ls -F'
 alias clear=/usr/bin/clear
 alias lgit='sudo -u lnxbuild git'
 alias setdate='date `date +%y%m%d%H%m`'
@@ -45,7 +47,7 @@ function mark
 function go 
 {
     typeset pdir=path_$1
-    typeset dir=`eval echo '${'$pdir'}'`
+    typeset dir=`eval echo '${'$pdir'}'`/$2
     cd $dir
 }
 
