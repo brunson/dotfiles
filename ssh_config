@@ -3,7 +3,6 @@ GSSAPIAuthentication no
 StrictHostKeyChecking no
 
 Host brunson.com
-	Port 222
 	User brunson
 	ForwardX11 no
 
