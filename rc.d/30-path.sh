@@ -1,2 +1,2 @@
 debug .bash/path.sh
-PATH=~/bin:$PATH:/sbin:/usr/sbin:/pkg/sysadmin/bin:~/workspace/android-sdk-linux/tools:~/workspace/android-sdk-linux/platform-tools:/new
+PATH=~/bin:$PATH:/sbin:/usr/sbin:/pkg/sysadmin/bin:~/android-sdk-linux/tools:~/android-sdk-linux/platform-tools
