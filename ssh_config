@@ -8,35 +8,43 @@ Host brunson.com
 
 Host salt
 	HostName abait18-lnx
+	User ebrunson
 
 Host home
 	HostName 76.120.106.35
 	Port 222
 	User brunson
 
+
 Host git-android-bldr.quicinc.com
+	User ebrunson
 	Port 29418
 	ForwardX11 no
 
 Host review-android.quicinc.com
 	Hostname review-android.quicinc.com
+	User ebrunson
 	Port 29418
 	ForwardX11 no
 
 Host review
 	Hostname review-android.quicinc.com
+	User ebrunson
 	Port 29418
 	ForwardX11 no
 
 Host quic
 	Hostname git.quicinc.com
+	User ebrunson
 	ForwardX11 no
 
 Host csd
 	Hostname abaitci609-sd-lnx
+	User ebrunson
 
 Host cml
 	Hostname abaitci610-sd-lnx
+	User ebrunson
 
 Host alpha
 	User admin
@@ -54,4 +62,7 @@ Host b
 
 Host 192.168.1.2
 	User root
+
+Host *
+	User ebrunson
 
