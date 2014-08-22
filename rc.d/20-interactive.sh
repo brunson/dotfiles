@@ -23,6 +23,17 @@ alias more=less
 alias trcrt="traceroute -q 1 -w 2"
 alias fixmp3names='rename "s/ /_/g ; s/_-_/-/g ; s/-_/-/g ; s/_-/-/g ; s/--*/-/g ; tr/A-Z/a-z/ ; s/%([1-9][0-9])/unpack('\''c'\'',)/g"'
 alias hclock='TZ=Asia/Calcutta xclock -analog -name Hyderabad'
+alias lnx='sudo -u lnxbuild'
+
+function fbtv
+{
+    sudo su lnxbuild -c "ssh -p 29418 bait_verifier@review-android.quicinc.com gerrit review --verified +1 $1"
+}
+
+function netgroups
+{
+    egrep $1 /usr/local/etc/common/netgroup/netgroup | cut -d' ' -f1
+}
 
 function gmt
 {
@@ -176,30 +187,30 @@ function ff0
 #       home dir version
 function fgh 
 { 
-    if [ "$1" ]; then find ~ -type f -exec grep -Hs $1 {} \; -print ; fi 
+    if [ "$1" ]; then find ~ -type f -exec grep -Hs "$1" {} \; -print ; fi 
 }
 
 #       current dir version 
 function fgr 
 { 
-    if [ "$1" ]; then find . -type f -exec grep -Hs $1 {} \; -print ; fi 
+    if [ "$1" ]; then find . -type f -exec grep -Hs "$1" {} \; -print ; fi 
 }
 
 #       current dir version 
 function fgw 
 { 
-    if [ "$1" ]; then find . -type f -exec grep -wHs $1 {} \; -print ; fi 
+    if [ "$1" ]; then find . -type f -exec grep -wHs "$1" {} \; -print ; fi 
 }
 
 # find verbose
 function fv  
 { 
-    if [ "$1" ]; then find . -type f -exec grep $1 {} \; -print ; fi 
+    if [ "$1" ]; then find . -type f -exec grep "$1" {} \; -print ; fi 
 }
 
 function fvi  
 { 
-    if [ "$1" ]; then find . -type f -exec grep -i $1 {} \; -print ; fi 
+    if [ "$1" ]; then find . -type f -exec grep -i "$1" {} \; -print ; fi 
 }
 
 # find directory by name
