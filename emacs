@@ -5,7 +5,28 @@
 
 ; set a few varibles based on the user environment
 
-; add in a local
+; python-mode
+(setq py-install-directory "~/.emacs.d/python-mode")
+(add-to-list 'load-path py-install-directory)
+(require 'python-mode)
+
+; use IPython
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "IPython")
+; use the wx backend, for both mayavi and matplotlib
+(setq py-python-command-args
+  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+(setq py-force-py-shell-name-p t)
+
+; switch to the interpreter after executing code
+(setq py-shell-switch-buffers-on-execute-p t)
+(setq py-switch-buffers-on-execute-p t)
+; don't split windows
+(setq py-split-windows-on-execute-p nil)
+; try to automagically figure out indentation
+(setq py-smart-indentation t)
+
+;add in a local
 (setq load-path 
       (append 
        '(
@@ -18,11 +39,12 @@
 
 (if window-system
     (progn 
-;      (server-start)
+      (server-start)
       (define-key ctl-x-map "\C-c" 'nil)
       (define-key ctl-x-map "c" 'kill-emacs)
       (setq x-select-enable-clipboard t)
-      (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+      (setq interprogram-paste-function 'x-selection-value)
+;      (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
       )
 )
 
@@ -78,6 +100,9 @@
 ;; (setq mmm-global-mode 'maybe)
 ;; (mmm-add-mode-ext-class 'html-mode "\\.php\\'" 'html-php)
 
+(mouse-wheel-mode t)
+(setq load-home-init-file t) ; don't load init file from ~/.xemacs/init.el
+(put 'dired-find-alternate-file 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'eval-expression 'disabled nil)
@@ -90,21 +115,18 @@
   ( sql-mysql )
   ( sql-set-sqli-buffer-generally ) )
 
-(mouse-wheel-mode t)
-
-(put 'dired-find-alternate-file 'disabled nil)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(tool-bar-mode nil))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(show-paren-mode t)
+ '(size-indication-mode t)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-(setq load-home-init-file t) ; don't load init file from ~/.xemacs/init.el
-
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "White" :foreground "Black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Menlo")))))

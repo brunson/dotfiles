@@ -17,10 +17,6 @@ export TNS_ADMIN=$ORACLE_HOME
 export ORACLE_SID=PROD_EDT01
 export TZ=MST7MDT
 
-export WS=/local/mnt/workspace/$USER
-export COMMANDER_SERVER=commander-test.qualcomm.com
-export BAIT_SCM_COMMANDER_SERVER="$COMMANDER_SERVER"
-
 export USE_CCACHE=1
 export CCACHE_DIR=/local/scratch/ebrunson/work/.ccache
 
