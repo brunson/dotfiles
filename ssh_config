@@ -46,9 +46,9 @@ Host lima
 	Hostname lima.home
 	User brunson
 
-Host git-codecommit.us-east-1.amazonaws.com
-	User APKAI76KHYWFI3U7KZDA
-	IdentityFile ~/.ssh/id_rsa_gitlab
+Host git-codecommit.*
+	User APKAJEZF72GX4OAIGMIA
+	IdentityFile ~/.ssh/id_rsa_codecommit
 
 Host *
 	User sueric
