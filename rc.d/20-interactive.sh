@@ -115,7 +115,7 @@ function settit
 	typeset text=$one
     fi
 
-    if  [ $TERM = xterm -o $TERM = xterm-color ]; then
+    if  [[ $TERM == xterm || $TERM == xterm-*color ]]; then
 	typeset _esc=""
 	typeset _ctlg=""
 	echo -n "${_esc}]0;$text${_ctlg}" >&2
