@@ -25,9 +25,9 @@ alias fixmp3names='rename "s/ /_/g ; s/_-_/-/g ; s/-_/-/g ; s/_-/-/g ; s/--*/-/g
 alias hclock='TZ=Asia/Calcutta xclock -analog -name Hyderabad'
 alias lnx='sudo -u lnxbuild'
 
-function fbtv
+function activate
 {
-    sudo su lnxbuild -c "ssh -p 29418 bait_verifier@review-android.quicinc.com gerrit review --verified +1 $1"
+    . $1/bin/activate
 }
 
 function netgroups
