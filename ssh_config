@@ -2,17 +2,26 @@
 GSSAPIAuthentication no
 StrictHostKeyChecking no
 
-Host svcs
+Host svcsd
 	Hostname aws-nv-d-inteng-svcs01
 	ForwardX11 no
-	LocalForward 5000 localhost:5000
+
+Host svcsp
+	Hostname aws-nv-p-inteng-svcs01
+	ForwardX11 no
 
 Host home
-	Hostname brunson.dnsalias.net
+	Hostname home.brunson.com
 	DynamicForward 1080
 	User brunson
 	Port 2222
 	ForwardX11 no
+
+Host vps
+	Hostname vps.brunson.com
+	User brunson
+	IdentityFile ~/.ssh/id_rsa_lima
+	Port 2222
 
 Host *.qwest.net
 	User brunson

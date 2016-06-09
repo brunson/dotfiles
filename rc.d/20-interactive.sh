@@ -9,12 +9,15 @@ fi
 case "$-" in
     *i*) stty erase 
          set -o ignoreeof 4
+         [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
 	;;
 esac
 
 umask 022
 
 alias j='jobs -l'
+alias use=workon
+alias mkvirtualenv='mkvirtualenv --python=python3.5'
 alias ls='ls -F'
 alias clear=/usr/bin/clear
 alias lgit='sudo -u lnxbuild git'
@@ -59,6 +62,7 @@ function go
 {
     typeset pdir=path_$1
     typeset dir=`eval echo '${'$pdir'}'`/$2
+    [ "/" = "$dir" ] && { echo "mark for $1 not set" ; return 1 ; }
     cd $dir
 }
 
