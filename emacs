@@ -73,6 +73,7 @@
 			  (list
 			   '("python" . python-mode)
 			   '("\\.py$" . python-mode)
+			   '("\\.pp$" . ruby-mode)
 			   '("\\.sh$" . ksh-mode)
 			   '("\\.ksh$" . ksh-mode)
 			   '("\\.bashrc" . ksh-mode)
