@@ -17,7 +17,6 @@ umask 022
 
 alias j='jobs -l'
 alias use=workon
-alias mkvirtualenv='mkvirtualenv --python=python3.5'
 alias ls='ls -F'
 alias clear=/usr/bin/clear
 alias lgit='sudo -u lnxbuild git'

@@ -1,2 +1,2 @@
 debug .bash/path.sh
-PATH=~/bin:$PATH
+PATH=~/bin:~/.local/bin:$PATH

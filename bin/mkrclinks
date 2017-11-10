@@ -5,7 +5,7 @@ DIR=.dotfiles
 cd ~/$DIR
 for file in *; do
     if [[ -f $file ]] ; then
-	path=$(echo $file | tr _ /)
+	path=$(echo $file | tr ^ /)
 	echo ln -sf ~/$DIR/$file ~/.$path
     fi
 done

@@ -1,0 +1,32 @@
+Host home
+    Hostname home.brunson.com
+    User brunson
+    Port 2222
+    ForwardX11 no
+
+Host proxy
+    Hostname home.brunson.com
+    User admin
+    Port 2223
+    ForwardX11 no
+    DynamicForward 5412
+
+Host alpha
+    User admin
+    Port 2223
+    ForwardX11 no
+
+Host retropie
+    User pi
+    ForwardX11 no
+
+Host gitlab*
+    User git
+    IdentityFile ~/.ssh/id_rsa_gitlab
+
+
+Host hashbang
+  HostName da1.hashbang.sh
+  IdentitiesOnly yes
+  User brunson
+  IdentityFile /home/brunson/.ssh/id_rsa_hashbang
