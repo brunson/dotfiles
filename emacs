@@ -1,22 +1,21 @@
 ; -*- emacs-lisp -*-
 
+(require 'package) ;; You might already have this line
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) 
 (setq suggest-key-bindings 1)
 (tool-bar-mode -1)
-
-; set a few varibles based on the user environment
 
 ; python-mode
 (setq py-install-directory "~/.emacs.d/python-mode")
 (add-to-list 'load-path py-install-directory)
 (require 'python-mode)
-
-; use IPython
-;(setq-default py-shell-name "ipython")
-;(setq-default py-which-bufname "IPython")
-; use the wx backend, for both mayavi and matplotlib
-;(setq py-python-command-args
-;  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
-;(setq py-force-py-shell-name-p t)
 
 ; switch to the interpreter after executing code
 (setq py-shell-switch-buffers-on-execute-p t)
@@ -36,6 +35,8 @@
 	 ) 
        load-path)
       )
+
+(setq exec-path (append '("/usr/local/bin/") exec-path))
 
 (if window-system
     (progn 
@@ -120,6 +121,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (python-mode magit)))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)
