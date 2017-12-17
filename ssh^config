@@ -1,3 +1,5 @@
+ForwardAgent yes
+
 Host home
     Hostname home.brunson.com
     User brunson
