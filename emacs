@@ -25,6 +25,9 @@
 ; try to automagically figure out indentation
 (setq py-smart-indentation t)
 
+(setq suggest-key-bindings 1)
+(tool-bar-mode -1)
+
 ;add in a local
 (setq load-path 
       (append 
@@ -121,7 +124,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+<<<<<<< HEAD
  '(package-selected-packages (quote (python-mode magit)))
+=======
+ '(package-selected-packages
+   (quote
+    (exec-path-from-shell python-docstring py-autopep8 elpy python-mode go-mode tramp-theme magit)))
+>>>>>>> changes from work including ssh-agent fix
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)

@@ -7,7 +7,7 @@ then
 fi
 
 case "$-" in
-    *i*) stty erase 
+    *i*) stty erase  
          set -o ignoreeof 4
          [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
 	;;
@@ -57,7 +57,7 @@ function mark
     export "path_$1"="${2:-`pwd`}"
 }
 
-function go 
+function d 
 {
     typeset pdir=path_$1
     typeset dir=`eval echo '${'$pdir'}'`/$2

@@ -1,0 +1,91 @@
+
+GSSAPIAuthentication no
+StrictHostKeyChecking no
+ForwardAgent yes
+
+Host github.com
+	IdentityFile ~/.ssh/id_rsa_github
+	User git
+
+Host kbdev
+	Hostname dev-use1a-pr-09-killbot-0001.dev-infra.valkyrie.net
+	ForwardX11 no
+
+Host kbprd
+	Hostname prd-use1a-pr-09-killbot-0001.prd-infra.valkyrie.net
+	ForwardX11 no
+
+Host home
+	Hostname home.brunson.com
+	User brunson
+	Port 2222
+	ForwardX11 no
+	IdentityFile ~/.ssh/id_rsa_lima
+
+Host nas
+	Hostname home.brunson.com
+	User admin
+	Port 2223
+	ForwardX11 no
+
+Host proxy
+	Hostname home.brunson.com
+	DynamicForward 1080
+	User admin
+	Port 2223
+	ForwardX11 no
+
+Host vps
+	Hostname vps.brunson.com
+	User brunson
+	IdentityFile ~/.ssh/id_rsa_lima
+	Port 2222
+
+Host *.qwest.net
+	User brunson
+	Port 2222
+	ForwardX11 no
+
+Host brunson.com
+	User brunson
+	ForwardX11 no
+
+Host janitor
+	User sueric
+	Hostname aws-nv-p-S3-bucket-janitor
+
+Host aws-*
+	User sueric
+	ForwardX11 no
+
+Host *-aws-*
+	User sueric
+	ForwardX11 no
+
+Host alpha*
+	Hostname 192.168.0.27
+	User admin
+	Port 2223
+	ForwardX11 no
+
+Host l
+	Hostname lima.home
+	User brunson
+
+Host lima
+	Hostname lima.home
+	User brunson
+
+Host git-codecommit.*
+	User APKAJEZF72GX4OAIGMIA
+	IdentityFile ~/.ssh/id_rsa_codecommit
+
+Host usdev
+	Hostname dev-use1a-pr-09-user_self_service-0001.dev-infra.valkyrie.net
+
+Host usprd
+	Hostname prd-use1a-pr-09-user_self_service-0001.prd-infra.valkyrie.net
+
+Host *
+	User sueric
+
