@@ -15,6 +15,8 @@ esac
 
 umask 022
 
+export GOPATH=~
+
 alias j='jobs -l'
 alias use=workon
 alias ls='ls -F'
@@ -26,6 +28,30 @@ alias trcrt="traceroute -q 1 -w 2"
 alias fixmp3names='rename "s/ /_/g ; s/_-_/-/g ; s/-_/-/g ; s/_-/-/g ; s/--*/-/g ; tr/A-Z/a-z/ ; s/%([1-9][0-9])/unpack('\''c'\'',)/g"'
 alias hclock='TZ=Asia/Calcutta xclock -analog -name Hyderabad'
 alias lnx='sudo -u lnxbuild'
+alias teams='curl -s http://bonzai-api-svc.prd.valkyrie.net/api/v1/teams'
+
+function autopep
+{
+    for dir in odc tests $* ; do
+	if [ -e $dir ] ; then
+	    find $dir -name \*.py | while read file ; do
+		autopep8 -i $file
+	    done
+	fi
+    done
+}
+
+function metadata
+{
+    curl http://169.254.169.254/latest/meta-data/$1/
+    echo
+}
+
+function userdata
+{
+    curl http://169.254.169.254/latest/user-data
+    echo
+}
 
 function activate
 {

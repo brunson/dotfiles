@@ -1,5 +1,10 @@
 ; -*- emacs-lisp -*-
 
+(setq suggest-key-bindings 1)
+(tool-bar-mode -1)
+
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (require 'package) ;; You might already have this line
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
