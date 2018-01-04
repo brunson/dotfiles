@@ -15,7 +15,7 @@ Host kbprd
 	Hostname 172.31.192.235
 	ForwardX11 no
 
-Host gitlab.valkyrie.net
+Host gitlab.oracledatacloud.com
 	User git
 
 Host home
