@@ -1,41 +1,98 @@
+
+GSSAPIAuthentication no
+#StrictHostKeyChecking no
 ForwardAgent yes
+
+Host github.com
+    IdentityFile ~/.ssh/id_rsa_github
+    User git
+
+Host kbdev
+    Hostname 172.31.1.141
+    ForwardX11 no
+
+Host kbprd
+    Hostname 172.31.192.235
+    ForwardX11 no
+
+Host gitlab.oracledatacloud.com
+    User git
 
 Host home
     Hostname home.brunson.com
     User brunson
     Port 2222
-    ForwardX11 no
+    ForwardX11Trusted yes
+    ForwardX11 yes
+    IdentityFile ~/.ssh/id_rsa_lima
 
-Host proxy
+Host nas
     Hostname home.brunson.com
     User admin
     Port 2223
     ForwardX11 no
-    DynamicForward 5412
 
-Host papa
-    User brunson
-
-Host alpha
+Host proxy
+    Hostname home.brunson.com
+    DynamicForward 1080
     User admin
     Port 2223
     ForwardX11 no
 
-Host retropie
-    User pi
-    ForwardX11 no
-
-Host github*
-    User git
-    IdentityFile ~/.ssh/id_rsa_github
-
-Host gitlab*
-    User git
-    IdentityFile ~/.ssh/id_rsa_gitlab
-
+Host papa
+    User brunson
 
 Host hashbang
-  HostName da1.hashbang.sh
-  IdentitiesOnly yes
-  User brunson
-  IdentityFile /home/brunson/.ssh/id_rsa_hashbang
+    HostName da1.hashbang.sh
+    IdentitiesOnly yes
+    User brunson
+    IdentityFile /home/brunson/.ssh/id_rsa_hashbang
+
+Host vps
+    Hostname vps.brunson.com
+    User brunson
+    IdentityFile ~/.ssh/id_rsa_lima
+    Port 2222
+
+Host *.qwest.net
+    User brunson
+    Port 2222
+    ForwardX11 no
+
+Host brunson.com
+    User brunson
+    ForwardX11 no
+
+Host janitor
+    User sueric
+    Hostname aws-nv-p-S3-bucket-janitor
+
+Host aws-*
+    User sueric
+    ForwardX11 no
+
+Host *-aws-*
+    User sueric
+    ForwardX11 no
+
+Host alpha*
+    User admin
+    Port 2223
+    ForwardX11 no
+
+Host lima
+    User brunson
+
+Host git-codecommit.*
+    User APKAJEZF72GX4OAIGMIA
+    IdentityFile ~/.ssh/id_rsa_codecommit
+
+Host usdev
+    Hostname dev-use1a-pr-09-user_self_service-0001.dev-infra.valkyrie.net
+
+Host usprd
+    Hostname prd-use1a-pr-09-user_self_service-0001.prd-infra.valkyrie.net
+
+Host *
+    User sueric
+
