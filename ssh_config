@@ -80,12 +80,7 @@ Host alpha*
 	Port 2223
 	ForwardX11 no
 
-Host l
-	Hostname lima.home
-	User brunson
-
 Host lima
-	Hostname lima.home
 	User brunson
 
 Host git-codecommit.*
