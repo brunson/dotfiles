@@ -132,7 +132,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (exec-path-from-shell python-docstring py-autopep8 elpy python-mode go-mode tramp-theme magit)))
+    (flycheck exec-path-from-shell python-docstring py-autopep8 elpy python-mode go-mode tramp-theme magit)))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)

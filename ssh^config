@@ -13,6 +13,9 @@ Host proxy
     ForwardX11 no
     DynamicForward 5412
 
+Host papa
+    User brunson
+
 Host alpha
     User admin
     Port 2223
