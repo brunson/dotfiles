@@ -63,16 +63,12 @@ Host brunson.com
     User brunson
     ForwardX11 no
 
-Host janitor
-    User sueric
-    Hostname aws-nv-p-S3-bucket-janitor
-
 Host aws-*
-    User sueric
+    User eric.brunson
     ForwardX11 no
 
 Host *-aws-*
-    User sueric
+    User eric.brunson
     ForwardX11 no
 
 Host alpha*
@@ -94,5 +90,5 @@ Host usprd
     Hostname prd-use1a-pr-09-user_self_service-0001.prd-infra.valkyrie.net
 
 Host *
-    User sueric
+    User eric.brunson
 

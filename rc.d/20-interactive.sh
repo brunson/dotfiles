@@ -17,6 +17,7 @@ umask 022
 
 export GOPATH=~
 
+alias lab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
 alias j='jobs -l'
 alias use=workon
 alias ls='ls -F'
