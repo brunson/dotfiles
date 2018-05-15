@@ -1,6 +1,10 @@
 ; -*- emacs-lisp -*-
 
 (setq suggest-key-bindings 1)
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-scroll-amount '(2
+				  ((shift) . 1)
+				  ((control) . 3)))
 (tool-bar-mode -1)
 
 (setq exec-path (append exec-path '("/usr/local/bin")))

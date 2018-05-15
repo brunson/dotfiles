@@ -18,6 +18,14 @@ Host kbprd
 Host gitlab.oracledatacloud.com
     User git
 
+Host byip
+    Hostname 71.218.125.91
+    User brunson
+    Port 2222
+    ForwardX11Trusted yes
+    ForwardX11 yes
+    IdentityFile ~/.ssh/id_rsa_lima
+
 Host home
     Hostname home.brunson.com
     User brunson
