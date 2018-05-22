@@ -2,8 +2,8 @@
 
 (setq suggest-key-bindings 1)
 (setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount '(2
-				  ((shift) . 1)
+(setq mouse-wheel-scroll-amount '(1
+				  ((shift) . 2)
 				  ((control) . 3)))
 (tool-bar-mode -1)
 
@@ -18,7 +18,6 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) 
-(setq suggest-key-bindings 1)
 (tool-bar-mode -1)
 
 ; python-mode
@@ -34,7 +33,6 @@
 ; try to automagically figure out indentation
 (setq py-smart-indentation t)
 
-(setq suggest-key-bindings 1)
 (tool-bar-mode -1)
 
 ;add in a local
@@ -57,6 +55,8 @@
       (define-key ctl-x-map "c" 'kill-emacs)
       (setq x-select-enable-clipboard t)
       (setq interprogram-paste-function 'x-selection-value)
+      (global-set-key (kbd "<M-up>") 'scroll-down-command)
+      (global-set-key (kbd "<M-down>") 'scroll-up-command)
 ;      (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
       )
 )
