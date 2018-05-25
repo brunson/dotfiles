@@ -4,7 +4,7 @@
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount '(1
 				  ((shift) . 2)
-				  ((control) . 3)))
+				  ((control) . 4)))
 (tool-bar-mode -1)
 
 (setq exec-path (append exec-path '("/usr/local/bin")))

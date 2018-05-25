@@ -19,16 +19,11 @@ export GOPATH=~
 
 alias lab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
 alias j='jobs -l'
-alias use=workon
 alias ls='ls -F'
 alias clear=/usr/bin/clear
-alias lgit='sudo -u lnxbuild git'
 alias setdate='date `date +%y%m%d%H%m`'
 alias more=less
 alias trcrt="traceroute -q 1 -w 2"
-alias fixmp3names='rename "s/ /_/g ; s/_-_/-/g ; s/-_/-/g ; s/_-/-/g ; s/--*/-/g ; tr/A-Z/a-z/ ; s/%([1-9][0-9])/unpack('\''c'\'',)/g"'
-alias hclock='TZ=Asia/Calcutta xclock -analog -name Hyderabad'
-alias lnx='sudo -u lnxbuild'
 alias teams='curl -s http://bonzai-api-svc.prd.valkyrie.net/api/v1/teams'
 
 function autopep
