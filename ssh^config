@@ -130,7 +130,7 @@ Host alpha*
     Port 2223
     ForwardX11 no
 
-Host lima
+Host lima*
     User brunson
 
 Host hackathon

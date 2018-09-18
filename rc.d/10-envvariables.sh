@@ -20,13 +20,22 @@ export TZ=MST7MDT
 export USE_CCACHE=1
 export CCACHE_DIR=/local/scratch/ebrunson/work/.ccache
 
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="CO"
+export KEY_CITY="Westminster"
+export KEY_ORG="Brunson Dot Com"
+export KEY_EMAIL="brunson@brunson.com"
+export KEY_CN=MyVPN
+export KEY_ALTNAMES=AltMyVPN
+export KEY_NAME=MyVPN
+export KEY_OU=MyVPN
+
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_DESCRIBE_STYLE="branch"
 GIT_PS1_SHOWCOLORHINTS=1
-
 
 Black="0;30"
 Blue="0;34"
