@@ -18,6 +18,8 @@ umask 022
 export GOPATH=~
 
 alias lab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
+alias rmkey='ssh-keygen -R'
+alias blk='black -l 104 --py36'
 alias j='jobs -l'
 alias ls='ls -F'
 alias clear=/usr/bin/clear
@@ -25,6 +27,11 @@ alias setdate='date `date +%y%m%d%H%m`'
 alias more=less
 alias trcrt="traceroute -q 1 -w 2"
 alias teams='curl -s http://bonzai-api-svc.prd.valkyrie.net/api/v1/teams'
+alias scan='sudo nmap -sS -sV -vv -T5 -Pn --script banner --open'
+alias sweep='sudo nmap -Sn'
+alias proxy='export HTTP_PROXY=http://www-proxy-brmdc.us.oracle.com'
+alias noproxy='unset HTTP_PROXY'
+alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 
 function autopep
 {

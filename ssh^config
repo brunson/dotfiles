@@ -3,6 +3,10 @@ GSSAPIAuthentication no
 #StrictHostKeyChecking no
 ForwardAgent yes
 
+Host otw
+    Hostname narnia.labs.overthewire.org
+    Port 2226
+
 Host github.com
     IdentityFile ~/.ssh/id_rsa_github
     User git
@@ -18,6 +22,38 @@ Host kbprd
 Host gitlab.oracledatacloud.com
     User git
 
+Host pen
+    User eric.brunson
+    Hostname 10.65.70.62
+
+Host labkali-old
+    User root
+    Hostname 10.80.249.57
+    Port 2223
+    IdentityFile ~/.ssh/id_rsa_su
+
+Host labkali
+    User root
+    Hostname 10.80.249.57
+    Port 30000
+    IdentityFile ~/.ssh/id_rsa_su
+
+Host vpnkali
+    User root
+    Hostname 192.168.0.24
+    IdentityFile ~/.ssh/id_rsa_su
+
+Host labproxy
+    User root
+    DynamicForward 1081
+    Hostname 10.80.249.57
+    Port 2024
+
+Host simshady
+    Host 172.16.222.10
+    User ericb
+    IdentityFile ~/.ssh/id_rsa_su
+
 Host byip
     Hostname 71.218.125.91
     User brunson
@@ -31,7 +67,15 @@ Host home
     User brunson
     Port 2222
     ForwardX11Trusted yes
-    ForwardX11 yes
+    ForwardX11 no
+    IdentityFile ~/.ssh/id_rsa_lima
+
+Host home2
+    Hostname home.brunson.com
+    User brunson
+    Port 2224
+    ForwardX11Trusted yes
+    ForwardX11 no
     IdentityFile ~/.ssh/id_rsa_lima
 
 Host nas
@@ -42,9 +86,10 @@ Host nas
 
 Host proxy
     Hostname home.brunson.com
-    DynamicForward 1080
-    User admin
-    Port 2223
+    DynamicForward 1081
+    User brunson
+    Port 2222
+    IdentityFile ~/.ssh/id_rsa_lima
     ForwardX11 no
 
 Host papa
@@ -80,12 +125,18 @@ Host *-aws-*
     ForwardX11 no
 
 Host alpha*
+    #Hostname home.brunson.com
     User admin
     Port 2223
     ForwardX11 no
 
 Host lima
     User brunson
+
+Host hackathon
+    Hostname 10.0.30.218
+    User eric.brunson
+    IdentityFile ~/.ssh/id_rsa_su
 
 Host git-codecommit.*
     User APKAJEZF72GX4OAIGMIA
