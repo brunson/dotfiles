@@ -78,12 +78,6 @@ Host home2
     ForwardX11 no
     IdentityFile ~/.ssh/id_rsa_lima
 
-Host nas
-    Hostname home.brunson.com
-    User admin
-    Port 2223
-    ForwardX11 no
-
 Host proxy
     Hostname home.brunson.com
     DynamicForward 1081
@@ -126,6 +120,12 @@ Host *-aws-*
 
 Host alpha*
     #Hostname home.brunson.com
+    User admin
+    Port 2223
+    ForwardX11 no
+
+Host nas
+    Hostname 10.135.127.190
     User admin
     Port 2223
     ForwardX11 no
