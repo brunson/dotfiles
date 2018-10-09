@@ -18,10 +18,13 @@ umask 022
 export GOPATH=~
 
 alias lab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
+alias osec='openvpn ~/.openvpn/OS-41975-PWK.ovpn &'
+alias disco='pkill -TERM openvpn'
+alias rdp='rdesktop -g 90% -r disk:mydisk=/media/sf_VMShared -u offsec -p cvBwE2P7G3z -a 16 win &'
 alias rmkey='ssh-keygen -R'
 alias blk='black -l 104 --py36'
 alias j='jobs -l'
-alias ls='ls -F'
+alias ls='ls -F --color'
 alias clear=/usr/bin/clear
 alias setdate='date `date +%y%m%d%H%m`'
 alias more=less
