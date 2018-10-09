@@ -24,7 +24,6 @@ Host gitlab.oracledatacloud.com
 
 Host pen
     User eric.brunson
-    Hostname 10.65.70.62
 
 Host labkali-old
     User root
