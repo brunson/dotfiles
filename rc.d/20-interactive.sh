@@ -17,9 +17,9 @@ umask 022
 
 export GOPATH=~
 
-alias lab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
+alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
 alias osec='openvpn ~/.openvpn/OS-41975-PWK.ovpn &'
-alias disco='pkill -TERM openvpn'
+alias odisco='pkill -TERM openvpn'
 alias rdp='rdesktop -g 90% -r disk:mydisk=/media/sf_VMShared -u offsec -p cvBwE2P7G3z -a 16 win &'
 alias rmkey='ssh-keygen -R'
 alias blk='black -l 104 --py36'
