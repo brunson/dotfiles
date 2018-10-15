@@ -9,7 +9,10 @@ fi
 case "$-" in
     *i*) stty erase  
          set -o ignoreeof 4
-         [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
+         for dir in /usr/local/bin/ /usr/share/virtualenvwrapper/ ; do
+             file=$dir/virtualenvwrapper.sh
+             [ -f $file ] && . $file && break
+         done
 	;;
 esac
 
