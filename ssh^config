@@ -49,8 +49,8 @@ Host labproxy
     Port 2024
 
 Host simshady
-    Host 172.16.222.10
     User ericb
+    Hostname 172.16.222.10
     IdentityFile ~/.ssh/id_rsa_su
 
 Host byip
@@ -61,7 +61,7 @@ Host byip
     ForwardX11 yes
     IdentityFile ~/.ssh/id_rsa_lima
 
-Host home
+Host homel
     Hostname home.brunson.com
     User brunson
     Port 2222
@@ -69,7 +69,7 @@ Host home
     ForwardX11 no
     IdentityFile ~/.ssh/id_rsa_lima
 
-Host home2
+Host homep
     Hostname home.brunson.com
     User brunson
     Port 2224

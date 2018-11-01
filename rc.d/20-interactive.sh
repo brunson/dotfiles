@@ -21,10 +21,10 @@ umask 022
 export GOPATH=~
 
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
-alias osec='openvpn ~/shared/OS-41975-PWK.ovpn &'
-alias odisco='pkill -TERM openvpn'
-alias rdp='rdesktop -g 70% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p cvBwE2P7G3z -a 16 win &'
-alias rdpxl='rdesktop -g 90% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p cvBwE2P7G3z -a 16 win &'
+alias osec='sudo openvpn ~/shared/OS-41975-PWK.ovpn &'
+alias odisco='sudo pkill -TERM openvpn'
+alias rdp='rdesktop -g 70% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p xxx -a 16 win &'
+alias rdpxl='rdesktop -g 90% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p xxx -a 16 win &'
 alias rmkey='ssh-keygen -R'
 alias blk='black -l 104 --py36'
 alias j='jobs -l'
