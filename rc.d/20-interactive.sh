@@ -25,8 +25,8 @@ alias osec='sudo openvpn ~/shared/OS-41975-PWK.ovpn &'
 alias odisco='sudo pkill -TERM openvpn'
 alias nmsec='nmcli c up OS-41975-PWK'
 alias nmdisco='nmcli c down OS-41975-PWK'
-alias rdp='nohup rdesktop -g 70% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p $(getsecret OSCP) -a 16 win &'
-alias rdpxl='nohup rdesktop -g 90% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p $(getsecret OSCP) -a 16 win &'
+alias rdp='nohup rdesktop -g 70% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p $(get_secret OSCP) -a 16 win &'
+alias rdpxl='nohup rdesktop -g 90% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p $(get_secret OSCP) -a 16 win &'
 alias rmkey='ssh-keygen -R'
 alias blk='black -l 104 --py36'
 alias j='jobs -l'
@@ -42,11 +42,14 @@ alias proxy='export HTTP_PROXY=http://www-proxy-brmdc.us.oracle.com'
 alias noproxy='unset HTTP_PROXY'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 
-function getsecret
+function get_secret
 {
+    secrets_file=~/.secrets
     [[ "$1" == "" ]] && { echo "usage: getsecret <name>" >&2 ; return 1 ; }
-    secret=$(grep "${1}=" ~/.secrets | cut -d= -f2)
-    [[ "$secret" == "" ]] && { echo "secret not found for $1" >&2 ; return 2 ; }
+    [[ -e $secrets_file ]] || { echo "$secrets_file file not found" >&2 ; return 2 ; }
+    [[ "$(stat -c %a $secrets_file)" == 600 ]] || { echo "run: chmod 600 $secrets_file" >&2 ; return 3 ; }
+    secret=$(grep "${1}=" $secrets_file | cut -d= -f2)
+    [[ "$secret" == "" ]] && { echo "secret not found for $1" >&2 ; return 5 ; }
     echo $secret
 }
 
