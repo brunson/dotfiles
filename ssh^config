@@ -97,7 +97,7 @@ Host hashbang
 Host vps
     Hostname vps.brunson.com
     User brunson
-    IdentityFile ~/.ssh/id_rsa_lima
+    IdentityFile ~/.ssh/id_rsa_su
     Port 2222
 
 Host *.qwest.net

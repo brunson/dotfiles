@@ -20,6 +20,7 @@ umask 022
 
 export GOPATH=~
 
+alias ww='workon work'
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
 alias osec='sudo openvpn ~/shared/OS-41975-PWK.ovpn &'
 alias odisco='sudo pkill -TERM openvpn'
@@ -41,6 +42,7 @@ alias sweep='sudo nmap -Sn'
 alias proxy='export HTTP_PROXY=http://www-proxy-brmdc.us.oracle.com'
 alias noproxy='unset HTTP_PROXY'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
+alias rot13='tr \[a-zA-Z] \[n-za-mN-ZA-M]'
 
 function get_secret
 {
