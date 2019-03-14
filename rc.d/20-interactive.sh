@@ -20,7 +20,11 @@ umask 022
 
 export GOPATH=~
 
+alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --query 'Regions[].[RegionName]' --output text"
 alias ww='workon work'
+alias wo='workon'
+alias take='notes take'
+alias mkvirtualenv='mkvirtualenv -p python3'
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
 alias osec='sudo openvpn ~/shared/OS-41975-PWK.ovpn &'
 alias odisco='sudo pkill -TERM openvpn'
