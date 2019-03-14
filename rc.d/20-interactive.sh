@@ -48,6 +48,25 @@ alias noproxy='unset HTTP_PROXY'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias rot13='tr \[a-zA-Z] \[n-za-mN-ZA-M]'
 
+function foreach_region
+{
+    {
+	echo \{
+        firsttime=1
+        aws --profile mfa_gs ec2 describe-regions --region us-east-1 \
+                \--query 'Regions[].[RegionName]' --output text | while read region ; do
+    	if [[ $firsttime == 1 ]] ; then
+    	    firsttime=0
+    	else
+                echo ,
+    	fi
+            echo -n "\"$region\": "
+            aws --region $region $@ || break
+        done
+        echo \}
+    } | jq .
+}
+
 function get_secret
 {
     secrets_file=~/.secrets
