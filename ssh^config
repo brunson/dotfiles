@@ -3,6 +3,31 @@ GSSAPIAuthentication no
 #StrictHostKeyChecking no
 ForwardAgent yes
 
+Host *.prd.us-phx.odc.im !bastion.isv*
+    ProxyCommand ssh bastion.isv.prd.us-phx.odc.im -W %h:%p
+    User ebrunson
+    IdentityFile ~/.ssh/id_rsa
+
+# Host *.mc.us-phx.odc.im deathstar.sh.odc.im !bastion.isv*
+    # ProxyCommand ssh -l ebrunson bastion.isv.mc.us-phx.odc.im -W %h:%p
+    # User ebrunson
+    # IdentityFile ~/.ssh/id_rsa
+
+Host *.prd.us-iad.odc.im !bastion.svc.prd.us-iad.odc.im !bst-*.prd.us-iad.odc.im
+    ProxyCommand ssh -l ebrunson bastion.svc.prd.us-iad.odc.im -W %h:%p
+    User ebrunson
+    IdentityFile ~/.ssh/id_rsa
+
+Host *.mc.us-iad.odc.im !bastion.svc.mc.us-iad.odc.im !bst-*.mc.us-iad.odc.im
+    ProxyCommand ssh -a -l ebrunson bastion.svc.mc.us-iad.odc.im -W %h:%p
+    User ebrunson
+    IdentityFile ~/.ssh/id_rsa
+
+Host bastion.isv*
+    ForwardAgent yes
+    User ebrunson
+    IdentityFile ~/.ssh/id_rsa
+
 Host otw
     Hostname narnia.labs.overthewire.org
     Port 2226
