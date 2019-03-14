@@ -12,6 +12,7 @@ HISTCONTROL=ignoreboth
 HISTFILESIZE=10000
 HISTSIZE=1000
 
+export DYLD_LIBRARY_PATH=~/lib/instantclient_12_2/
 export ORACLE_HOME=/usr/local/oracle
 export TNS_ADMIN=$ORACLE_HOME
 export ORACLE_SID=PROD_EDT01
