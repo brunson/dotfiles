@@ -20,6 +20,7 @@ umask 022
 
 export GOPATH=~
 
+alias checkip="curl https://domains.google.com/checkip ; echo"
 alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --query 'Regions[].[RegionName]' --output text"
 alias ww='workon work'
 alias wo='workon'

@@ -6,6 +6,7 @@
 				  ((shift) . 2)
 				  ((control) . 4)))
 (tool-bar-mode -1)
+(global-eldoc-mode -1)
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
