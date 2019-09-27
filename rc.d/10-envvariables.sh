@@ -12,6 +12,7 @@ HISTCONTROL=ignoreboth
 HISTFILESIZE=10000
 HISTSIZE=1000
 
+export REQUESTS_CA_BUNDLE=/Users/eric.brunson/Downloads/cacert.pem
 export DYLD_LIBRARY_PATH=~/lib/instantclient_12_2/
 export ORACLE_HOME=/usr/local/oracle
 export TNS_ADMIN=$ORACLE_HOME

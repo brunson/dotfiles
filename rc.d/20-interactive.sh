@@ -20,9 +20,11 @@ umask 022
 
 export GOPATH=~
 
+alias sortips="sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4"
 alias checkip="curl https://domains.google.com/checkip ; echo"
 alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --query 'Regions[].[RegionName]' --output text"
-alias ww='workon work'
+alias w6='workon work'
+alias ww='workon w7'
 alias wo='workon'
 alias take='notes take'
 alias mkvirtualenv='mkvirtualenv -p python3'
@@ -46,7 +48,11 @@ alias scan='sudo nmap -sS -sV -vv -T5 -Pn --script banner --open'
 alias sweep='sudo nmap -Sn'
 alias proxy='export HTTP_PROXY=http://www-proxy-brmdc.us.oracle.com'
 alias noproxy='unset HTTP_PROXY'
+alias bksearch='ldapsearch -h ldap1.bluekai.com -D "ebrunson" -b "ou=people,dc=odc,dc=im"'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
+alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\eric.brunson" -E pr=1000/noprompt -x -b "ou=Employees,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
+alias beehivesearch='ldapsearch -x -h ldap.oracle.com -b cn=beehive_groups,cn=groups,dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
+alias ssosearch='ldapsearch -x -h ldap.oracle.com -b dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias rot13='tr \[a-zA-Z] \[n-za-mN-ZA-M]'
 
 function foreach_region

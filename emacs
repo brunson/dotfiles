@@ -5,8 +5,8 @@
 (setq mouse-wheel-scroll-amount '(1
 				  ((shift) . 2)
 				  ((control) . 4)))
-(tool-bar-mode -1)
-(global-eldoc-mode -1)
+(if (functionp 'tool-bar-mode) (tool-bar-mode 0))
+(if (functionp 'global-eldoc-mode) (global-eldoc-mode 0))
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
@@ -19,7 +19,6 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) 
-(tool-bar-mode -1)
 
 ; python-mode
 (setq py-install-directory "~/.emacs.d/python-mode")
@@ -115,7 +114,7 @@
 ;; (setq mmm-global-mode 'maybe)
 ;; (mmm-add-mode-ext-class 'html-mode "\\.php\\'" 'html-php)
 
-(mouse-wheel-mode t)
+(if (functionp 'mouse-wheel-mode) (mouse-wheel-mode t))
 (setq load-home-init-file t) ; don't load init file from ~/.xemacs/init.el
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'set-goal-column 'disabled nil)
@@ -135,9 +134,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (flycheck exec-path-from-shell python-docstring py-autopep8 elpy python-mode go-mode tramp-theme magit)))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)
@@ -158,4 +154,4 @@
      ;; If you edit it by hand, you could mess it up, so be careful.
      ;; Your init file should contain only one such instance.
      ;; If there is more than one, they won't work right.
-     '(default ((t (:inherit nil :stipple nil :background "White" :foreground "Black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "MONO" :family "Andale Mono"))))))))
+     '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "MONO" :family "Andale Mono"))))))))

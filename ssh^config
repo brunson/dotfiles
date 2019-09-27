@@ -3,30 +3,46 @@ GSSAPIAuthentication no
 #StrictHostKeyChecking no
 ForwardAgent yes
 
-Host *.prd.us-phx.odc.im !bastion.isv*
-    ProxyCommand ssh bastion.isv.prd.us-phx.odc.im -W %h:%p
-    User ebrunson
-    IdentityFile ~/.ssh/id_rsa
+#OCI
+## us-phoenix-1 V1
+#Host *.prd.us-phx.odc.im !bastion.isv* 10.65.*
+#   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
+ 
+Host *.mc.us-phx.odc.im mc.us-phx deathstar.sh.odc.im !bastion.isv* 10.64.*
+   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
+ 
+## us-phoenix-1 V2
+Host 10.194.* 10.196.* *phx1.oracledatacloud.com *phxshared1.oracledatacloud.com !bastion-62-*
+  ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
+ 
+## us-ashburn-1 V2
+Host 10.195.* 10.197.* *iad1.oracledatacloud.com *iadshared1.oracledatacloud.com !bastion-62-*
+  ProxyCommand ssh bastion-iad.oracledatacloud.com -W %h:%p
 
-# Host *.mc.us-phx.odc.im deathstar.sh.odc.im !bastion.isv*
-    # ProxyCommand ssh -l ebrunson bastion.isv.mc.us-phx.odc.im -W %h:%p
-    # User ebrunson
-    # IdentityFile ~/.ssh/id_rsa
-
-Host *.prd.us-iad.odc.im !bastion.svc.prd.us-iad.odc.im !bst-*.prd.us-iad.odc.im
-    ProxyCommand ssh -l ebrunson bastion.svc.prd.us-iad.odc.im -W %h:%p
-    User ebrunson
+Host phx
+    hostname bastion-phx.oracledatacloud.com
     IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
 
-Host *.mc.us-iad.odc.im !bastion.svc.mc.us-iad.odc.im !bst-*.mc.us-iad.odc.im
-    ProxyCommand ssh -a -l ebrunson bastion.svc.mc.us-iad.odc.im -W %h:%p
-    User ebrunson
+Host iad
+    hostname bastion-iad.oracledatacloud.com
     IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
+
+Host bastion-*
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
 
 Host bastion.isv*
-    ForwardAgent yes
     User ebrunson
     IdentityFile ~/.ssh/id_rsa
+
+Host term-client
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/id_rsa_sec
+    # Identity id_rsa_sec 
+    User ubuntu
+    Hostname 10.100.11.168
 
 Host otw
     Hostname narnia.labs.overthewire.org
@@ -72,6 +88,11 @@ Host labproxy
     DynamicForward 1081
     Hostname 10.80.249.57
     Port 2024
+
+Host engtools
+    User ericb
+    Hostname 172.16.233.3
+    IdentityFile ~/.ssh/id_rsa_su
 
 Host simshady
     User ericb
