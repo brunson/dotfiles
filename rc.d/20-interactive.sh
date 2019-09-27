@@ -54,6 +54,7 @@ alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\eric.bruns
 alias beehivesearch='ldapsearch -x -h ldap.oracle.com -b cn=beehive_groups,cn=groups,dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias ssosearch='ldapsearch -x -h ldap.oracle.com -b dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias rot13='tr \[a-zA-Z] \[n-za-mN-ZA-M]'
+alias bksearch="ldapsearch -H ldap://nsp-922f7104.ad1.mc.us-phx.odc.im -o ldif-wrap=no -x -b 'ou=people,dc=odc,dc=im' -D 'cn=Directory Manager' -w \"\$(cat ~/.bkldap)\" "
 
 function foreach_region
 {
