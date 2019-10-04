@@ -1,7 +1,9 @@
 
 GSSAPIAuthentication no
 #StrictHostKeyChecking no
+StrictHostKeyChecking=accept-new
 ForwardAgent yes
+ServerAliveInterval 60
 
 #OCI
 ## us-phoenix-1 V1
@@ -10,14 +12,32 @@ ForwardAgent yes
  
 Host *.mc.us-phx.odc.im mc.us-phx deathstar.sh.odc.im !bastion.isv* 10.64.*
    ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
+   User eric.brunson
+   IdentitiesOnly yes
+   IdentityFile ~/.ssh/id_rsa
  
 ## us-phoenix-1 V2
 Host 10.194.* 10.196.* *phx1.oracledatacloud.com *phxshared1.oracledatacloud.com !bastion-62-*
-  ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
+   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
+   User eric.brunson
+   IdentitiesOnly yes
+   IdentityFile ~/.ssh/id_rsa
  
 ## us-ashburn-1 V2
 Host 10.195.* 10.197.* *iad1.oracledatacloud.com *iadshared1.oracledatacloud.com !bastion-62-*
   ProxyCommand ssh bastion-iad.oracledatacloud.com -W %h:%p
+
+Host tancopy
+    hostname tanium.oracledatacloud.com
+    IdentityFile ~/.ssh/id_tanadmin_rsa
+    IdentitiesOnly yes
+    User tancopy
+
+Host tanium
+    hostname tanium.oracledatacloud.com
+    IdentityFile ~/.ssh/id_tanadmin_rsa
+    IdentitiesOnly yes
+    User tanadmin
 
 Host phx
     hostname bastion-phx.oracledatacloud.com
