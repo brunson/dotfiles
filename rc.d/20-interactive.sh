@@ -20,7 +20,7 @@ umask 022
 
 export GOPATH=~
 
-alias pxz = "parallel --pipe --recend '' -k xz --block-size 128M"
+alias pxz="parallel --pipe --recend '' -k xz --block-size 128M"
 alias sortips="sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4"
 alias checkip="curl https://domains.google.com/checkip ; echo"
 alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --query 'Regions[].[RegionName]' --output text"
