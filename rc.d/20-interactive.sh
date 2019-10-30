@@ -20,6 +20,8 @@ umask 022
 
 export GOPATH=~
 
+alias udf="df -h | grep -v -e udev -e snap"
+alias rdf="df -h | grep -v -e udev -e snap -e tmpfs"
 alias pxz="parallel --pipe --recend '' -k xz --block-size 128M"
 alias sortips="sort -n -t . -k 1,1 -k 2,2 -k 3,3 -k 4,4"
 alias checkip="curl https://domains.google.com/checkip ; echo"
