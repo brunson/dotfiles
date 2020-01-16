@@ -1,14 +1,19 @@
-
-GSSAPIAuthentication no
-#StrictHostKeyChecking no
-StrictHostKeyChecking=accept-new
-ForwardAgent yes
-ServerAliveInterval 60
+Host *
+ AddKeysToAgent yes
+ IdentityFile ~/.ssh/id_rsa
+ ServerAliveCountMax 3
+ ServerAliveInterval 10
+ ForwardAgent yes
+ TCPKeepAlive yes
+ StrictHostKeyChecking no
+ GatewayPorts yes
+ GSSAPIAuthentication no
+ StrictHostKeyChecking=accept-new
 
 #OCI
-## us-phoenix-1 V1
-#Host *.prd.us-phx.odc.im !bastion.isv* 10.65.*
-#   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
+# us-phoenix-1 V1
+Host *.prd.us-phx.odc.im !bastion.isv* 10.65.*
+   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
  
 Host *.mc.us-phx.odc.im mc.us-phx deathstar.sh.odc.im !bastion.isv* 10.64.*
    ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
@@ -27,6 +32,9 @@ Host 10.194.* 10.196.* *phx1.oracledatacloud.com *phxshared1.oracledatacloud.com
 Host 10.195.* 10.197.* *iad1.oracledatacloud.com *iadshared1.oracledatacloud.com !bastion-62-*
   ProxyCommand ssh bastion-iad.oracledatacloud.com -W %h:%p
 
+Host essos
+  User root
+  Hostname 10.65.35.183
 Host tancopy
     hostname tanium.oracledatacloud.com
     IdentityFile ~/.ssh/id_tanadmin_rsa
@@ -41,21 +49,9 @@ Host tanium
 
 Host phx
     hostname bastion-phx.oracledatacloud.com
-    IdentityFile ~/.ssh/id_rsa
-    IdentitiesOnly yes
 
 Host iad
     hostname bastion-iad.oracledatacloud.com
-    IdentityFile ~/.ssh/id_rsa
-    IdentitiesOnly yes
-
-Host bastion-*
-    IdentityFile ~/.ssh/id_rsa
-    IdentitiesOnly yes
-
-Host bastion.isv*
-    User ebrunson
-    IdentityFile ~/.ssh/id_rsa
 
 Host term-client
     IdentitiesOnly yes
@@ -173,26 +169,6 @@ Host *.qwest.net
 
 Host brunson.com
     User brunson
-    ForwardX11 no
-
-Host aws-*
-    User eric.brunson
-    ForwardX11 no
-
-Host *-aws-*
-    User eric.brunson
-    ForwardX11 no
-
-Host alpha*
-    #Hostname home.brunson.com
-    User admin
-    Port 2223
-    ForwardX11 no
-
-Host nas
-    Hostname 10.135.127.190
-    User admin
-    Port 2223
     ForwardX11 no
 
 Host lima*
