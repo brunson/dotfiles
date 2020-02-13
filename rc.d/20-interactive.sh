@@ -20,6 +20,7 @@ umask 022
 
 export GOPATH=~
 
+alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
 alias udf="df -h | grep -v -e udev -e snap"
 alias rdf="df -h | grep -v -e udev -e snap -e tmpfs"
 alias pxz="parallel --pipe --recend '' -k xz --block-size 128M"
