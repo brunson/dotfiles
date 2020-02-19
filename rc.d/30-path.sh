@@ -1,2 +1,5 @@
 debug .bash/path.sh
-PATH=~/bin:~/Library/Python/3.7/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/opt/metasploit-framework/bin:$PATH
+for dir in /usr/local/sbin /usr/local/sbin /Users/eric.brunson/Library/Python/3.8/bin ~/bin ~/.local/bin ; do
+    [ -d "$dir" ] && PATH=$dir:$PATH
+done
+

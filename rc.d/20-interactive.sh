@@ -20,6 +20,8 @@ umask 022
 
 export GOPATH=~
 
+alias pip2=python2 -m pip
+alias pip=python3 -m pip
 alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
 alias vault_aws="vault login -address=https://vault.dev-infra.oracledatacloud.com -method=aws header_value=289647624397 role=security-operations"
 alias udf="df -h | grep -v -e udev -e snap"
