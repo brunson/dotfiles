@@ -20,6 +20,7 @@ umask 022
 
 export GOPATH=~
 
+alias counts="my inv -e 'select * from counts;'"
 alias pip2="python2 -m pip"
 alias pip="python3 -m pip"
 alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
@@ -61,6 +62,16 @@ alias beehivesearch='ldapsearch -x -h ldap.oracle.com -b cn=beehive_groups,cn=gr
 alias ssosearch='ldapsearch -x -h ldap.oracle.com -b dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias rot13='tr \[a-zA-Z] \[n-za-mN-ZA-M]'
 alias bksearch="ldapsearch -H ldap://nsp-922f7104.ad1.mc.us-phx.odc.im -o ldif-wrap=no -x -b 'ou=people,dc=odc,dc=im' -D 'cn=Directory Manager' -w \"\$(cat ~/.bkldap)\" "
+alias orgs="aws --profile mfa_inv_master organizations list-accounts --query 'Accounts[].[Id, Status, Name]' --output text"
+
+function vault
+{
+    CMD=$1
+    shift
+
+    ~/bin/vault $CMD -address https://vault.dev-infra.oracledatacloud.com "$@"
+
+}
 
 function foreach_region
 {
