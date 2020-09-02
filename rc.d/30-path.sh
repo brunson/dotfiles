@@ -1,5 +1,5 @@
 debug .bash/path.sh
-for dir in /usr/local/sbin /usr/local/sbin /bin ~/.local/bin ; do
+for dir in /usr/local/sbin /bin ~/.local/bin ; do
     [ -d "$dir" ] && PATH=$dir:$PATH
 done
 
