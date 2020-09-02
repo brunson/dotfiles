@@ -14,8 +14,8 @@ HISTSIZE=1000
 
 # CA_BUNDLE=/Users/eric.brunson/Downloads/cacert.pem
 # [ -f CA_BUNDLE ] && export REQUESTS_CA_BUNDLE=$CA_BUNDLE
-export DYLD_LIBRARY_PATH=~/lib/instantclient_12_2/
-export ORACLE_HOME=/usr/local/oracle
+export DYLD_LIBRARY_PATH=~/lib/instantclient_19_3/
+export ORACLE_HOME=$DYLD_LIBRARY_PATH
 export TNS_ADMIN=$ORACLE_HOME
 export ORACLE_SID=PROD_EDT01
 export TZ=MST7MDT

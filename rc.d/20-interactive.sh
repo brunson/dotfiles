@@ -20,10 +20,22 @@ umask 022
 
 export GOPATH=~
 
+source <(kubectl completion bash)
+
+alias lsusbx="ioreg -p IOUSB"
+alias dx="docker exec -ti"
+alias signpython='codesign -f -s - $(which python)'
+alias dubuntu="docker container run --rm -it -v /Users/eric.brunson:/home/eric.brunson -v /:/host -u 616615499 local"
+alias dclean="docker container ls -aq | xargs docker container rm"
+alias dprune="docker image prune"
+alias dscrub="dclean ; dprune"
+alias k=kubectl
+alias aliases="vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
+alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
 alias counts="my inv -e 'select * from counts;'"
 alias pip2="python2 -m pip"
 alias pip="python3 -m pip"
-alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
+# alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
 alias vault_aws="vault login -address=https://vault.dev-infra.oracledatacloud.com -method=aws header_value=289647624397 role=security-operations"
 alias udf="df -h | grep -v -e udev -e snap"
 alias rdf="df -h | grep -v -e udev -e snap -e tmpfs"
@@ -43,25 +55,27 @@ alias nmdisco='nmcli c down OS-41975-PWK'
 alias rdp='nohup rdesktop -g 70% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p $(get_secret OSCP) -a 16 win &'
 alias rdpxl='nohup rdesktop -g 90% -r disk:bin=/usr/share/windows-binaries -r disk:mydisk=/media/sf_VMShared -u offsec -p $(get_secret OSCP) -a 16 win &'
 alias rmkey='ssh-keygen -R'
-alias blk='black -l 104 --py36'
+alias blk='black -S -l 104 --py36'
 alias j='jobs -l'
 alias ls='ls -F --color'
 alias clear=/usr/bin/clear
 alias setdate='date `date +%y%m%d%H%m`'
 alias more=less
 alias trcrt="traceroute -q 1 -w 2"
-alias teams='curl -s http://bonzai-api-svc.prd.valkyrie.net/api/v1/teams'
+alias teams='curl -s http://bonzai-api-svc.prd.valkyrie.net/api/v1/teams | jq . | less'
 alias scan='sudo nmap -sS -sV -vv -T5 -Pn --script banner --open'
 alias sweep='sudo nmap -Sn'
 alias proxy='export HTTP_PROXY=http://www-proxy-brmdc.us.oracle.com'
 alias noproxy='unset HTTP_PROXY'
-alias bksearch='ldapsearch -h ldap1.bluekai.com -D "ebrunson" -b "ou=people,dc=odc,dc=im"'
+#alias bksearch='ldapsearch -h ldap1.bluekai.com -D "ebrunson" -b "ou=people,dc=odc,dc=im"'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
-alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\eric.brunson" -E pr=1000/noprompt -x -b "ou=Employees,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
+alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
 alias beehivesearch='ldapsearch -x -h ldap.oracle.com -b cn=beehive_groups,cn=groups,dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias ssosearch='ldapsearch -x -h ldap.oracle.com -b dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias rot13='tr \[a-zA-Z] \[n-za-mN-ZA-M]'
-alias bksearch="ldapsearch -H ldap://nsp-922f7104.ad1.mc.us-phx.odc.im -o ldif-wrap=no -x -b 'ou=people,dc=odc,dc=im' -D 'cn=Directory Manager' -w \"\$(cat ~/.bkldap)\" "
+alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b 'ou=people,dc=bluekai,dc=com' -D 'uid=ebrunson,ou=people,dc=bluekai,dc=com' -w \"\$(cat ~/.bkldap)\" "
+alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b 'ou=people,dc=bluekai,dc=com' -D 'uid=ebrunson,ou=people,dc=bluekai,dc=com' -w \"\$(cat ~/.bkldap)\" "
+alias bksearch="ldapsearch -H ldap://nsp-2b57a82a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b "dc=odc,dc=im" -D 'cn=Directory Manager' -w  \"\$(cat ~/.bkldap)\" "
 alias orgs="aws --profile mfa_inv_master organizations list-accounts --query 'Accounts[].[Id, Status, Name]' --output text"
 
 function vault
@@ -78,7 +92,7 @@ function foreach_region
     {
 	echo \{
         firsttime=1
-        aws --profile mfa_gs ec2 describe-regions --region us-east-1 \
+        aws --profile dev ec2 describe-regions --region us-east-1 \
                 \--query 'Regions[].[RegionName]' --output text | while read region ; do
     	if [[ $firsttime == 1 ]] ; then
     	    firsttime=0
