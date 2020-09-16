@@ -20,7 +20,9 @@ umask 022
 
 export GOPATH=~
 
-source <(kubectl completion bash)
+if [ -x "$(which kubectl)" ] ; then
+    source <(kubectl completion bash)
+fi
 
 alias lsusbx="ioreg -p IOUSB"
 alias dx="docker exec -ti"
