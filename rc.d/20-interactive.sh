@@ -1,11 +1,6 @@
 # -*- Mode: shell-script; -*-
 debug .bash/interactive.sh
 
-if [ $( basename $SHELL ) = bash ]
-then
-    alias print=echo
-fi
-
 case "$-" in
     *i*) stty erase  
          set -o ignoreeof 4
@@ -22,6 +17,7 @@ export GOPATH=~
 
 source <(kubectl completion bash)
 
+alias tansnmp='snmpwalk -v 3 -u tanuser -A "q\$h6xqfODI50" -a sha -t 10 -x AES -l authnoPriv  10.196.14.243'
 alias lsusbx="ioreg -p IOUSB"
 alias dx="docker exec -ti"
 alias signpython='codesign -f -s - $(which python)'
