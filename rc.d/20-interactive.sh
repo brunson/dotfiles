@@ -15,7 +15,9 @@ umask 022
 
 export GOPATH=~
 
-source <(kubectl completion bash)
+if [ -x "$(which kubectl)" ] ; then
+    source <(kubectl completion bash)
+fi
 
 alias tansnmp='snmpwalk -v 3 -u tanuser -A "q\$h6xqfODI50" -a sha -t 10 -x AES -l authnoPriv  10.196.14.243'
 alias lsusbx="ioreg -p IOUSB"
