@@ -189,6 +189,10 @@ Host usdev
 Host usprd
     Hostname prd-use1a-pr-09-user_self_service-0001.prd-infra.valkyrie.net
 
+Host pi
+    Hostname retropie.lan
+    User pi
+    
 Host *
     User eric.brunson
 
