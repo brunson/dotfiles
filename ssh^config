@@ -1,68 +1,47 @@
-Host *
- AddKeysToAgent yes
- IdentityFile ~/.ssh/id_rsa
- ServerAliveCountMax 3
- ServerAliveInterval 10
- ForwardAgent yes
- TCPKeepAlive yes
- StrictHostKeyChecking no
- GatewayPorts yes
- GSSAPIAuthentication no
- StrictHostKeyChecking=accept-new
 
-#OCI
-# us-phoenix-1 V1
+GSSAPIAuthentication no
+StrictHostKeyChecking no
+ForwardAgent yes
+ServerAliveInterval 90
+
+# OCI uses ODC AD Account
+## us-phoenix-1 V1
 Host *.prd.us-phx.odc.im !bastion.isv* 10.65.*
+   User ebrunson
    ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
  
 Host *.mc.us-phx.odc.im mc.us-phx deathstar.sh.odc.im !bastion.isv* 10.64.*
+   User ebrunson
    ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
-   User eric.brunson
-   IdentitiesOnly yes
-   IdentityFile ~/.ssh/id_rsa
  
 ## us-phoenix-1 V2
 Host 10.194.* 10.196.* *phx1.oracledatacloud.com *phxshared1.oracledatacloud.com !bastion-62-*
-   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
-   User eric.brunson
-   IdentitiesOnly yes
-   IdentityFile ~/.ssh/id_rsa
+  ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
  
 ## us-ashburn-1 V2
 Host 10.195.* 10.197.* *iad1.oracledatacloud.com *iadshared1.oracledatacloud.com !bastion-62-*
   ProxyCommand ssh bastion-iad.oracledatacloud.com -W %h:%p
 
-Host essos
-  User root
-  Hostname 10.65.35.183
-Host tancopy
-    hostname tanium.oracledatacloud.com
-    IdentityFile ~/.ssh/id_tanadmin_rsa
+Host phx bastion-phx.oracledatacloud.com
+    User eric.brunson
+    Hostname bastion-phx.oracledatacloud.com
     IdentitiesOnly yes
-    User tancopy
+    IdentityFile ~/.ssh/id_rsa
 
-Host tanium
-    hostname tanium.oracledatacloud.com
-    IdentityFile ~/.ssh/id_tanadmin_rsa
+Host iad bastion-iad.oracledatacloud.com
+    User eric.brunson
+    Hostname bastion-iad.oracledatacloud.com
     IdentitiesOnly yes
-    User tanadmin
-
-Host phx
-    hostname bastion-phx.oracledatacloud.com
-
-Host iad
-    hostname bastion-iad.oracledatacloud.com
-
-Host term-client
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/id_rsa_sec
-    # Identity id_rsa_sec 
-    User ubuntu
-    Hostname 10.100.11.168
+    IdentityFile ~/.ssh/id_rsa
 
 Host otw
     Hostname narnia.labs.overthewire.org
     Port 2226
+
+Host moat
+    # Hostname gateway.moat.com
+    Hostname 54.144.241.207
+    User ericbrunson
 
 Host github.com
     IdentityFile ~/.ssh/id_rsa_github
@@ -105,10 +84,16 @@ Host labproxy
     Hostname 10.80.249.57
     Port 2024
 
-Host engtools
-    User ericb
-    Hostname 172.16.233.3
+Host ssecops
+    User secops
+    Hostname secops
     IdentityFile ~/.ssh/id_rsa_su
+
+Host term-client
+    User ubuntu
+    Hostname 10.100.11.168
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/id_rsa_sec
 
 Host simshady
     User ericb
@@ -123,7 +108,7 @@ Host byip
     ForwardX11 yes
     IdentityFile ~/.ssh/id_rsa_lima
 
-Host homel
+Host home
     Hostname home.brunson.com
     User brunson
     Port 2222
@@ -131,7 +116,7 @@ Host homel
     ForwardX11 no
     IdentityFile ~/.ssh/id_rsa_lima
 
-Host homep
+Host home2
     Hostname home.brunson.com
     User brunson
     Port 2224
@@ -159,7 +144,7 @@ Host hashbang
 Host vps
     Hostname vps.brunson.com
     User brunson
-    IdentityFile ~/.ssh/id_rsa_su
+    IdentityFile ~/.ssh/id_rsa_lima
     Port 2222
 
 Host *.qwest.net
@@ -169,6 +154,26 @@ Host *.qwest.net
 
 Host brunson.com
     User brunson
+    ForwardX11 no
+
+Host aws-*
+    User eric.brunson
+    ForwardX11 no
+
+Host *-aws-*
+    User eric.brunson
+    ForwardX11 no
+
+Host alpha*
+    #Hostname home.brunson.com
+    User admin
+    Port 2223
+    ForwardX11 no
+
+Host nas
+    Hostname 10.135.127.190
+    User admin
+    Port 2223
     ForwardX11 no
 
 Host lima*
@@ -189,10 +194,32 @@ Host usdev
 Host usprd
     Hostname prd-use1a-pr-09-user_self_service-0001.prd-infra.valkyrie.net
 
-Host pi
-    Hostname retropie.lan
-    User pi
-    
+Host homel
+    Hostname home.brunson.com
+    Port 2222
+    User brunson
+
+Host tanftp
+    Hostname tanium.oracledatacloud.com
+    User tancopy
+    IdentityFile ~/.ssh/id_tanadmin_rsa
+
+Host tanium
+    Hostname tanium.oracledatacloud.com
+    User tanadmin
+    IdentityFile ~/.ssh/id_tanadmin_rsa
+
+Host tandev
+    Hostname 10.224.220.96
+    User tanadmin
+    IdentityFile ~/.ssh/id_tandev_rsa
+
+
+Host homep
+    Hostname home.brunson.com
+    Port 2223
+    User brunson
+
 Host *
     User eric.brunson
 
