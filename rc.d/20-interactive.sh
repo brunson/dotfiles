@@ -13,7 +13,9 @@ esac
 
 umask 022
 
-if [ -x "$(/usr/bin/which kubectl)" ] ; then
+export GOPATH=~
+
+if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
