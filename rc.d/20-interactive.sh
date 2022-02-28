@@ -15,7 +15,7 @@ umask 022
 
 export GOPATH=~
 
-if [ -x "$(which kubectl)" ] ; then
+if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
