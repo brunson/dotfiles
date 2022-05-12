@@ -89,7 +89,7 @@ function vault
     CMD=$1
     shift
 
-    ~/bin/vault $CMD -address https://vault.dev-infra.oracledatacloud.com "$@"
+    /opt/homebrew/bin/vault $CMD -address https://vault.dev-infra.oracledatacloud.com "$@"
 
 }
 

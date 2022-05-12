@@ -20,19 +20,6 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) 
 
-; python-mode
-(setq py-install-directory "~/.emacs.d/python-mode")
-(add-to-list 'load-path py-install-directory)
-(require 'python-mode)
-
-; switch to the interpreter after executing code
-(setq py-shell-switch-buffers-on-execute-p t)
-(setq py-switch-buffers-on-execute-p t)
-; don't split windows
-(setq py-split-windows-on-execute-p nil)
-; try to automagically figure out indentation
-(setq py-smart-indentation t)
-
 (tool-bar-mode -1)
 
 ;add in a local
@@ -73,21 +60,6 @@
 (require 'sje-switch-buffer)
 (define-key ctl-x-map "b" 'sje-iswitch)
 (define-key ctl-x-map "y" 'bury-buffer)
-
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-(autoload 'ksh-mode "ksh-mode" "Ksh shell-script mode" t)
-
-(setq auto-mode-alist
-      (append auto-mode-alist
-			  (list
-			   '("python" . python-mode)
-			   '("\\.py$" . python-mode)
-			   '("\\.pp$" . ruby-mode)
-			   '("\\.sh$" . ksh-mode)
-			   '("\\.ksh$" . ksh-mode)
-			   '("\\.bashrc" . ksh-mode)
-			   '("\\.xpi" . archive-mode)
-			   '("\\..*profile" . ksh-mode))))
 
 ;  VERSION CONTROL  
 ; Another nice feature of emacs.  After every session of editting 
