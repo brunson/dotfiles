@@ -4,7 +4,7 @@ debug .bash/interactive.sh
 case "$-" in
     *i*) stty erase  
          set -o ignoreeof 4
-         for dir in /usr/local/bin/ /usr/share/virtualenvwrapper/ ; do
+         for dir in ./Library/Python/3.9/bin/virtualenvwrapper.sh /usr/local/bin/ /usr/share/virtualenvwrapper/ ; do
              file=$dir/virtualenvwrapper.sh
              [ -f $file ] && . $file && break
          done
@@ -19,6 +19,11 @@ if [ -x "$(which kubectl)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias kssh="ssh -l opc -i ~/.ssh/oci-k8s-dev"
+alias tandecode="sed -e 's/->/\n/g' <<.EOF"
+alias ksp='kubectl --context us-phx-c --namespace security-prod'
+alias kst='kubectl --context us-phx-c --namespace security-test'
+alias ksd='kubectl --context us-phx-c --namespace security-dev'
 alias sumcol='python -c "import sys; print(sum(int(l) for l in sys.stdin))"'
 alias qbrew='HOMEBREW_NO_AUTO_UPDATE=1 brew'
 alias wx="curl wttr.in/Broomfield"

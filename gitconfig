@@ -11,6 +11,7 @@
   cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
   amend = commit --amend -CHEAD
   bdiff = log --left-right --graph --cherry-pick --pretty='%C(auto) %h %d%Cblue %ad%Cred %aN %Creset%s'
+  chhist = log --follow -p -- 
   stash-untracked = "!f() {  \
     git stash;       \
     git stash -u;    \
@@ -18,3 +19,5 @@
   }; f"
 [pull]
 	ff = only
+[init]
+	defaultBranch = master
