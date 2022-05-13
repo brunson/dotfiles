@@ -6,7 +6,7 @@ export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 
 case $(uname -s) in
     Darwin)
-	DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $PYTHON/bin ~/.local/bin ~/bin blarg"
+	DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $PYTHON/bin $HOME/.local/bin $HOME/bin blarg"
 	;;
     *)
 	DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin ~/.local/bin ~/bin"
