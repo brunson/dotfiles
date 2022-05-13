@@ -36,6 +36,7 @@ alias dclean="docker container ls -aq | xargs docker container rm"
 alias dprune="docker image prune"
 alias dscrub="dclean ; dprune"
 alias k=kubectl
+complete -F __start_kubectl k
 alias aliases="vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
 alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
 alias counts="my inv -e 'select * from counts;'"
@@ -51,6 +52,7 @@ alias checkip="curl https://domains.google.com/checkip ; echo"
 alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --query 'Regions[].[RegionName]' --output text"
 alias ww='workon work'
 alias wo='workon'
+complete -o default -o nospace -F _virtualenvs workon
 alias take='notes take'
 alias mkvirtualenv='mkvirtualenv -p python3'
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
