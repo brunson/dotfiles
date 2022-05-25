@@ -56,3 +56,6 @@ Brown="0;33"
 colorize() {
     echo "\e[$@]\e[m"
 }
+
+PATH=~/go
+

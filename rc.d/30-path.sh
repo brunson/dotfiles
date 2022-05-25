@@ -4,20 +4,21 @@ BREW=/opt/homebrew
 PYTHON=/Library/Frameworks/Python.framework/Versions/3.10
 export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 
-case $(uname -s) in
+case $(/usr/bin/uname -s) in
     Darwin)
-	DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $PYTHON/bin $HOME/.local/bin $HOME/bin"
+	DIRS="$GOPATH/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $PYTHON/bin $HOME/.local/bin $HOME/bin"
 	;;
     *)
 	DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin ~/.local/bin ~/bin"
 	;;
 esac
 
+export PATH=/bin:/usr/bin
 
 NEW_PATH=""
 for dir in $DIRS ; do
     [ -d "$dir" ] || continue
-    echo "$NEW_PATH" | tr : \\n | grep -q ^${dir}$ && continue
+    echo "$NEW_PATH" | /usr/bin/tr : \\n | /usr/bin/grep -q ^${dir}$ && continue
     if [[ -z "$NEW_PATH" ]] ; then
 	NEW_PATH=$dir
     else

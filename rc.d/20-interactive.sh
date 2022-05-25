@@ -2,7 +2,7 @@
 debug .bash/interactive.sh
 
 case "$-" in
-    *i*) stty erase  
+    *i*) /bin/stty erase  
          set -o ignoreeof 4
          for dir in ./Library/Python/3.9/bin/virtualenvwrapper.sh /usr/local/bin/ /usr/share/virtualenvwrapper/ ; do
              file=$dir/virtualenvwrapper.sh
@@ -13,13 +13,12 @@ esac
 
 umask 022
 
-export GOPATH=~
-
-if [ -x "$(which kubectl)" ] ; then
+if [ -x "$(/usr/bin/which kubectl)" ] ; then
     source <(kubectl completion bash)
 fi
 
-alias kssh="ssh -l opc -i ~/.ssh/oci-k8s-dev"
+alias okssh="ssh -l opc -i ~/.ssh/oci-k8s-dev"
+alias akssh="ssh -l opc -i ~/.ssh/oci-k8s-dev"
 alias tandecode="sed -e 's/->/\n/g' <<.EOF"
 alias ksp='kubectl --context us-phx-c --namespace security-prod'
 alias kst='kubectl --context us-phx-c --namespace security-test'
@@ -36,8 +35,13 @@ alias dclean="docker container ls -aq | xargs docker container rm"
 alias dprune="docker image prune"
 alias dscrub="dclean ; dprune"
 alias k=kubectl
+complete -o default -o nospace -F __start_kubectl k
+alias ctx=kubectx
+complete -F _kube_contexts ctx
+alias ns=kubens
 complete -F __start_kubectl k
 alias aliases="vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
+alias path="vi ~/.dotfiles/rc.d/30-path.sh ; . ~/.dotfiles/rc.d/30-path.sh"
 alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
 alias counts="my inv -e 'select * from counts;'"
 alias pip2="python2 -m pip"
@@ -52,7 +56,7 @@ alias checkip="curl https://domains.google.com/checkip ; echo"
 alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --query 'Regions[].[RegionName]' --output text"
 alias ww='workon work'
 alias wo='workon'
-complete -o default -o nospace -F _virtualenvs workon
+complete -o default -o nospace -F _virtualenvs wo
 alias take='notes take'
 alias mkvirtualenv='mkvirtualenv -p python3'
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
@@ -219,7 +223,7 @@ readmarks
 
 function su 
 {
-	settit "#`hostname`"
+	settit "#`/bin/hostname`"
 	command su $@
 	settit
 }
@@ -228,12 +232,12 @@ function su
 function settit 
 {
     if [ "$1" = "" ]; then
-	typeset one="$(hostname)"
+	typeset one="$(/bin/hostname)"
     else
 	typeset one="$@"
     fi
 
-    if [ "$(whoami)" = "root" ]; then
+    if [ "$(/usr/bin/whoami)" = "root" ]; then
 	typeset text="# $one"
     else
 	typeset text=$one
