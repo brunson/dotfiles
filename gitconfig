@@ -8,7 +8,7 @@
   tree = log --graph --decorate --pretty=oneline --abbrev-commit
   hist = log --pretty=format:\"%Cgreen%h%Creset %Cblue%ad%Creset %s%C(yellow)%d%Creset %Cblue[%an]%Creset\" --graph --date=short
   branches = "!git for-each-ref refs/heads --format='%(refname)' | cut -d/ -f3"
-  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+  cleanup = "!git branch --merged | grep  -v '\\*\\|main\\|develop' | xargs -n 1 git branch -d"
   amend = commit --amend -CHEAD
   bdiff = log --left-right --graph --cherry-pick --pretty='%C(auto) %h %d%Cblue %ad%Cred %aN %Creset%s'
   chhist = log --follow -p -- 

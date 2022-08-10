@@ -35,13 +35,14 @@ alias dclean="docker container ls -aq | xargs docker container rm"
 alias dprune="docker image prune"
 alias dscrub="dclean ; dprune"
 alias k=kubectl
+alias argoadmin='kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo'
 complete -o default -o nospace -F __start_kubectl k
 alias ctx=kubectx
 complete -F _kube_contexts ctx
 alias ns=kubens
 complete -F __start_kubectl k
 alias aliases="vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
-alias path="vi ~/.dotfiles/rc.d/30-path.sh ; . ~/.dotfiles/rc.d/30-path.sh"
+alias path="vi ~/.dotfiles/rc.d/30-path.sh ; . ~/.dotfiles/rc.d/30-path.sh ; hash -r"
 alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
 alias counts="my inv -e 'select * from counts;'"
 alias pip2="python2 -m pip"

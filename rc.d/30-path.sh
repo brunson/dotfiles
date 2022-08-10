@@ -2,11 +2,13 @@ debug .bash/path.sh
 
 BREW=/opt/homebrew
 PYTHON=/Library/Frameworks/Python.framework/Versions/3.10
+MYPYTHON=/Users/ebrunson/Library/Python/3.10
+GOPATH=/usr/local/go
 export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 
 case $(/usr/bin/uname -s) in
     Darwin)
-	DIRS="$GOPATH/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $PYTHON/bin $HOME/.local/bin $HOME/bin"
+	DIRS="$GOPATH/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.rd/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $MYPYTHON/bin $PYTHON/bin $HOME/.local/bin $HOME/bin"
 	;;
     *)
 	DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin ~/.local/bin ~/bin"
