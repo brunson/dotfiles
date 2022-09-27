@@ -57,5 +57,4 @@ colorize() {
     echo "\e[$@]\e[m"
 }
 
-PATH=~/go
 
