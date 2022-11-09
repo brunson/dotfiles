@@ -1,6 +1,8 @@
 #!/bin/bash -p
 
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 [ -f '/usr/local/bin/aws_bash_completer' ] && source '/usr/local/bin/aws_bash_completer'
+[[ -e /opt/homebrew/bin/kubectl ]] && source <(kubectl completion bash)
 
 _saved_marks()
 {

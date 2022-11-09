@@ -20,19 +20,6 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) 
 
-; python-mode
-(setq py-install-directory "~/.emacs.d/python-mode")
-(add-to-list 'load-path py-install-directory)
-(require 'python-mode)
-
-; switch to the interpreter after executing code
-(setq py-shell-switch-buffers-on-execute-p t)
-(setq py-switch-buffers-on-execute-p t)
-; don't split windows
-(setq py-split-windows-on-execute-p nil)
-; try to automagically figure out indentation
-(setq py-smart-indentation t)
-
 (tool-bar-mode -1)
 
 ;add in a local
@@ -73,21 +60,6 @@
 (require 'sje-switch-buffer)
 (define-key ctl-x-map "b" 'sje-iswitch)
 (define-key ctl-x-map "y" 'bury-buffer)
-
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-(autoload 'ksh-mode "ksh-mode" "Ksh shell-script mode" t)
-
-(setq auto-mode-alist
-      (append auto-mode-alist
-			  (list
-			   '("python" . python-mode)
-			   '("\\.py$" . python-mode)
-			   '("\\.pp$" . ruby-mode)
-			   '("\\.sh$" . ksh-mode)
-			   '("\\.ksh$" . ksh-mode)
-			   '("\\.bashrc" . ksh-mode)
-			   '("\\.xpi" . archive-mode)
-			   '("\\..*profile" . ksh-mode))))
 
 ;  VERSION CONTROL  
 ; Another nice feature of emacs.  After every session of editting 
@@ -135,8 +107,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell elpy)))
+   '(lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell elpy))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)
@@ -157,7 +128,7 @@
      ;; If you edit it by hand, you could mess it up, so be careful.
      ;; Your init file should contain only one such instance.
      ;; If there is more than one, they won't work right.
-     '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "MONO" :family "Andale Mono"))))))))
+     '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "MONO" :family "Andale Mono"))))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

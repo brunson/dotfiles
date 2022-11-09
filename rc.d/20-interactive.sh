@@ -2,7 +2,7 @@
 debug .bash/interactive.sh
 
 case "$-" in
-    *i*) stty erase  
+    *i*) /bin/stty erase  
          set -o ignoreeof 4
          for dir in /usr/local/bin/ /usr/share/virtualenvwrapper/ ; do
              file=$dir/virtualenvwrapper.sh
@@ -19,8 +19,21 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+if [ -x "$(/usr/bin/which kubectl)" ] ; then
+    source <(kubectl completion bash)
+fi
+
 alias mdstat="cat /proc/mdstat"
 alias biggest="du -sh * | sort -h"
+alias vncpapa="open vnc://papa.lan:5901"
+alias okssh="ssh -l opc -i ~/.ssh/oci-k8s-dev"
+alias akssh="ssh -l opc -i ~/.ssh/oci-k8s-dev"
+alias tandecode="sed -e 's/->/\n/g' <<.EOF"
+alias ksp='kubectl --context us-phx-c --namespace security-prod'
+alias kst='kubectl --context us-phx-c --namespace security-test'
+alias ksd='kubectl --context us-phx-c --namespace security-dev'
+alias sumcol='python -c "import sys; print(sum(int(l) for l in sys.stdin))"'
+alias qbrew='HOMEBREW_NO_AUTO_UPDATE=1 brew'
 alias wx="curl wttr.in/Broomfield"
 alias tansnmp='snmpwalk -v 3 -u tanuser -A "q\$h6xqfODI50" -a sha -t 10 -x AES -l authnoPriv  10.196.14.243'
 alias lsusbx="ioreg -p IOUSB"
@@ -30,10 +43,18 @@ alias dubuntu="docker container run --rm -it -v /Users/eric.brunson:/home/eric.b
 alias dclean="docker container ls -aq | xargs docker container rm"
 alias dprune="docker image prune"
 alias dscrub="dclean ; dprune"
+alias argoadmin='kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo'
 alias k=kubectl
-alias aliases="vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
+complete -o default -o nospace -F __start_kubectl k
+alias ctx=kubectx
+complete -F _kube_contexts ctx
+alias ns=kubens
+complete -F __start_kubectl k
+alias envvars="/usr/bin/vi ~/.dotfiles/rc.d/10-envvariables.sh ; . ~/.dotfiles/rc.d/10-envvariables.sh"
+alias aliases="/usr/bin/vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
+alias path="/usr/bin/vi ~/.dotfiles/rc.d/30-path.sh ; . ~/.dotfiles/rc.d/30-path.sh ; hash -r"
 alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
-alias counts="my inv -e 'select * from counts;'"
+alias counts="my inv -e 'select * from count_by_state where state = \"running\" order by environment;'"
 alias pip2="python2 -m pip"
 alias pip="python3 -m pip"
 # alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
@@ -46,6 +67,7 @@ alias checkip="curl https://domains.google.com/checkip ; echo"
 alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --query 'Regions[].[RegionName]' --output text"
 alias ww='workon work'
 alias wo='workon'
+complete -o default -o nospace -F _virtualenvs wo
 alias take='notes take'
 alias mkvirtualenv='mkvirtualenv -p python3'
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
@@ -70,6 +92,7 @@ alias proxy='export HTTP_PROXY=http://www-proxy-brmdc.us.oracle.com'
 alias noproxy='unset HTTP_PROXY'
 #alias bksearch='ldapsearch -h ldap1.bluekai.com -D "ebrunson" -b "ou=people,dc=odc,dc=im"'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
+alias adsearchsu='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "OU=Privileged,OU=Other,DC=valkyrie,DC=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
 alias beehivesearch='ldapsearch -x -h ldap.oracle.com -b cn=beehive_groups,cn=groups,dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias ssosearch='ldapsearch -x -h ldap.oracle.com -b dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
@@ -84,7 +107,7 @@ function vault
     CMD=$1
     shift
 
-    ~/bin/vault $CMD -address https://vault.dev-infra.oracledatacloud.com "$@"
+    /opt/homebrew/bin/vault $CMD -address https://vault.dev-infra.oracledatacloud.com "$@"
 
 }
 
@@ -212,7 +235,7 @@ readmarks
 
 function su 
 {
-	settit "#`hostname`"
+	settit "#`/bin/hostname`"
 	command su $@
 	settit
 }
@@ -221,12 +244,12 @@ function su
 function settit 
 {
     if [ "$1" = "" ]; then
-	typeset one="$(hostname)"
+	typeset one="$(/bin/hostname)"
     else
 	typeset one="$@"
     fi
 
-    if [ "$(whoami)" = "root" ]; then
+    if [ "$(/usr/bin/whoami)" = "root" ]; then
 	typeset text="# $one"
     else
 	typeset text=$one
