@@ -46,7 +46,7 @@ alias envvars="/usr/bin/vi ~/.dotfiles/rc.d/10-envvariables.sh ; . ~/.dotfiles/r
 alias aliases="/usr/bin/vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
 alias path="/usr/bin/vi ~/.dotfiles/rc.d/30-path.sh ; . ~/.dotfiles/rc.d/30-path.sh ; hash -r"
 alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
-alias counts="my inv -e 'select * from counts;'"
+alias counts="my inv -e 'select * from count_by_state where state = \"running\" order by environment;'"
 alias pip2="python2 -m pip"
 alias pip="python3 -m pip"
 # alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'

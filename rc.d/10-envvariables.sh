@@ -12,6 +12,8 @@ HISTCONTROL=ignoreboth
 HISTFILESIZE=10000
 HISTSIZE=1000
 
+OCI_PYTHON_SDK_NO_SERVICE_IMPORTS="1"
+
 # CA_BUNDLE=/Users/eric.brunson/Downloads/cacert.pem
 # [ -f CA_BUNDLE ] && export REQUESTS_CA_BUNDLE=$CA_BUNDLE
 export DYLD_LIBRARY_PATH=~/lib/instantclient_19_3/
@@ -57,4 +59,5 @@ colorize() {
     echo "\e[$@]\e[m"
 }
 
+export HOMEBREW_NO_AUTO_UPDATE=1
 
