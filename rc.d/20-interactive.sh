@@ -19,10 +19,6 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
-if [ -x "$(/usr/bin/which kubectl)" ] ; then
-    source <(kubectl completion bash)
-fi
-
 alias mdstat="cat /proc/mdstat"
 alias biggest="du -sh * | sort -h"
 alias vncpapa="open vnc://papa.lan:5901"
