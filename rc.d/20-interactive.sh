@@ -19,6 +19,8 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias mdstat="cat /proc/mdstat"
+alias biggest="du -sh * | sort -h"
 alias wx="curl wttr.in/Broomfield"
 alias tansnmp='snmpwalk -v 3 -u tanuser -A "q\$h6xqfODI50" -a sha -t 10 -x AES -l authnoPriv  10.196.14.243'
 alias lsusbx="ioreg -p IOUSB"
