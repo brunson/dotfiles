@@ -17,9 +17,12 @@
     git stash -u;    \
     git stash pop stash@{1}; \
   }; f"
+	graph = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset'
 [pull]
 	ff = only
 [init]
 	defaultBranch = master
 [rerere]
 	enabled = true
+[color]
+	ui = auto
