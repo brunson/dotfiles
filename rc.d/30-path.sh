@@ -1,8 +1,8 @@
 debug .bash/path.sh
 
 BREW=/opt/homebrew
-PYTHON=/Library/Frameworks/Python.framework/Versions/3.10
-MYPYTHON=/Users/ebrunson/Library/Python/3.10
+PYTHON=/Library/Frameworks/Python.framework/Versions/3.11
+MYPYTHON=/Users/ebrunson/Library/Python/3.11
 GOPATH=/usr/local/go
 export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 
