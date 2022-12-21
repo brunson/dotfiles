@@ -44,7 +44,7 @@ Host moat
     User ericbrunson
 
 Host github.com
-    IdentityFile ~/.ssh/id_rsa_github
+    IdentityFile /Users/ebrunson/.ssh/id_rsa_github
     User git
 
 Host kbdev

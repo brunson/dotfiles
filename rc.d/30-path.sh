@@ -13,7 +13,7 @@ case $(/usr/bin/uname -s) in
         ;;
     *)
         debug not Darwin
-        DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.local/bin $HOME/bin"
+        DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin /usr/local/sbin $HOME/.local/bin $HOME/bin"
         ;;
 esac
 
