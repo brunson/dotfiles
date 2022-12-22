@@ -1,5 +1,7 @@
 
-for key in ~/.ssh/id_rsa ~/.ssh/id_rsa_gitlab ~/.ssh/id_rsa_github; do
-   [ -f $key ] && ssh-add $key 2>&- | grep -sv "Identity added:" || :
+DIR=~/.ssh
+
+for key in id_rsa id_rsa_gitlab id_rsa_github; do
+    [ -f $DIR/$key ] && ssh-add -l | grep -qw $key || ssh-add $DIR/$key 2>&- | grep -sv "Identity added:" || :
 done
 
