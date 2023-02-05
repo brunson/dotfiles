@@ -82,10 +82,6 @@
   ;; xemacs has defaults set up ok, but needs explicit loading
   (require 'font-lock))
 
-;; (require 'mmm-auto)
-;; (setq mmm-global-mode 'maybe)
-;; (mmm-add-mode-ext-class 'html-mode "\\.php\\'" 'html-php)
-
 (if (functionp 'mouse-wheel-mode) (mouse-wheel-mode t))
 (setq load-home-init-file t) ; don't load init file from ~/.xemacs/init.el
 (put 'dired-find-alternate-file 'disabled nil)
