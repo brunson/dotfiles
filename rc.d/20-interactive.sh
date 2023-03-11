@@ -103,7 +103,7 @@ function vault
     CMD=$1
     shift
 
-    /opt/homebrew/bin/vault $CMD -address https://vault.dev-infra.oracledatacloud.com "$@"
+    /opt/homebrew/bin/vault kv $CMD -address https://vault.prd.phxshared.oracledatacloud.com secret2/"$@"
 
 }
 
