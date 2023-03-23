@@ -19,6 +19,8 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias fluent="docker run --rm -ti --volume ~/fluent-bit/etc:/fluent-bit/etc --workdir /fluent-bit docker.io/fluent/fluent-bit:1.9.10"
+alias fluent-debug="docker run --rm -ti --volume ~/fluent-bit/etc:/fluent-bit/etc --workdir /fluent-bit docker.io/fluent/fluent-bit:1.9.10-debug /bin/bash"
 alias mdstat="cat /proc/mdstat"
 alias biggest="du -sh * | sort -h"
 alias vncpapa="open vnc://papa.lan:5901"
@@ -51,8 +53,6 @@ alias aliases="/usr/bin/vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc
 alias path="/usr/bin/vi ~/.dotfiles/rc.d/30-path.sh ; . ~/.dotfiles/rc.d/30-path.sh ; hash -r"
 alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
 alias counts="my inv -e 'select * from count_by_state where state = \"running\" order by environment;'"
-alias pip2="python2 -m pip"
-alias pip="python3 -m pip"
 # alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
 alias vault_aws="vault login -address=https://vault.dev-infra.oracledatacloud.com -method=aws header_value=289647624397 role=security-operations"
 alias udf="df -h | grep -v -e udev -e snap"
@@ -65,7 +65,6 @@ alias ww='workon work'
 alias wo='workon'
 complete -o default -o nospace -F _virtualenvs wo
 alias take='notes take'
-alias mkvirtualenv='mkvirtualenv -p python3'
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
 alias osec='sudo openvpn ~/shared/OS-41975-PWK.ovpn &'
 alias odisco='sudo pkill -TERM openvpn'
