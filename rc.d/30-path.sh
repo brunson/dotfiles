@@ -1,10 +1,16 @@
 debug .bash/path.sh
 
-BREW=/opt/homebrew
-PYTHON=/Library/Frameworks/Python.framework/Versions/3.11
-MYPYTHON=/Users/ebrunson/Library/Python/3.11
-GOPATH=/usr/local/go
-export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
+if [[ $(uname) == "Darwin" ]] ; then
+    BREW=/opt/homebrew
+    PYTHON=/Library/Frameworks/Python.framework/Versions/3.11
+    MYPYTHON=/Users/ebrunson/Library/Python/3.11
+    GOPATH=/usr/local/go
+    export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
+else
+    PYTHON=$(which python3)
+    MYPYTHON=$PYTHON
+    VIRTUALENVWRAPPER_PYTHON=$PYTHON
+fi
 
 case $(/usr/bin/uname -s) in
     Darwin)
