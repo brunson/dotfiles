@@ -19,6 +19,8 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias odcdclist="dig srv _ldap._tcp.dc._msdcs.oracledatacloud.com"
+alias valkyriedclist="dig srv _ldap._tcp.dc._msdcs.valkyrie.net"
 alias fluent="docker run --rm -ti --volume ~/fluent-bit/etc:/fluent-bit/etc --workdir /fluent-bit docker.io/fluent/fluent-bit:1.9.10"
 alias fluent-debug="docker run --rm -ti --volume ~/fluent-bit/etc:/fluent-bit/etc --workdir /fluent-bit docker.io/fluent/fluent-bit:1.9.10-debug /bin/bash"
 alias mdstat="cat /proc/mdstat"
