@@ -55,7 +55,7 @@ alias envvars="/usr/bin/vi ~/.dotfiles/rc.d/10-envvariables.sh ; . ~/.dotfiles/r
 alias aliases="/usr/bin/vi ~/.dotfiles/rc.d/20-interactive.sh ; . ~/.dotfiles/rc.d/20-interactive.sh"
 alias path="/usr/bin/vi ~/.dotfiles/rc.d/30-path.sh ; . ~/.dotfiles/rc.d/30-path.sh ; hash -r"
 alias fuckmcafee="sudo /usr/local/McAfee/AntiMalware/VSControl stopoas"
-alias counts="my inv -e 'select * from count_by_state where state = \"running\" order by environment;'"
+alias counts="my inv -t -e 'select * from count_by_state where state = \"running\" order by environment;'"
 # alias vault_login='vault login -address https://vault.dev-infra.oracledatacloud.com -method ldap username=eric.brunson'
 alias vault_aws="vault login -address=https://vault.dev-infra.oracledatacloud.com -method=aws header_value=289647624397 role=security-operations"
 alias udf="df -h | grep -v -e udev -e snap"
@@ -100,7 +100,7 @@ alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-
 alias bksearch="ldapsearch -H ldap://nsp-2b57a82a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b "dc=odc,dc=im" -D 'cn=Directory Manager' -w  \"\$(cat ~/.bkldap)\" "
 alias orgs="aws --profile mfa_inv_master organizations list-accounts --query 'Accounts[].[Id, Status, Name]' --output text"
 
-function vault
+function vault_kv
 {
     CMD=$1
     shift
