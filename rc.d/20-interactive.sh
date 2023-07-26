@@ -13,12 +13,14 @@ esac
 
 umask 022
 
-export GOPATH=~
+export GOPATH=~/go/
+export GOROOT=/usr/local/go/
 
 if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias k8ssetup="pushd ~ ; git archive --format=tar --remote=git@gitlab.oracledatacloud.com:infra-deploy/gitops.git HEAD -- hack/oa_k8s_setup.sh | tar -O -xf - | bash ; popd"
 alias odcdclist="dig srv _ldap._tcp.dc._msdcs.oracledatacloud.com"
 alias valkyriedclist="dig srv _ldap._tcp.dc._msdcs.valkyrie.net"
 alias fluent="docker run --rm -ti --volume ~/fluent-bit/etc:/fluent-bit/etc --workdir /fluent-bit docker.io/fluent/fluent-bit:1.9.10"
@@ -92,6 +94,7 @@ alias noproxy='unset HTTP_PROXY'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias adsearchsu='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "OU=Privileged,OU=Other,DC=valkyrie,DC=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
+alias odcsvcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Service Accounts,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
 alias beehivesearch='ldapsearch -x -h ldap.oracle.com -b cn=beehive_groups,cn=groups,dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias ssosearch='ldapsearch -x -h ldap.oracle.com -b dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias rot13='tr \[a-zA-Z] \[n-za-mN-ZA-M]'
@@ -100,7 +103,7 @@ alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-
 alias bksearch="ldapsearch -H ldap://nsp-2b57a82a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b "dc=odc,dc=im" -D 'cn=Directory Manager' -w  \"\$(cat ~/.bkldap)\" "
 alias orgs="aws --profile mfa_inv_master organizations list-accounts --query 'Accounts[].[Id, Status, Name]' --output text"
 
-function vault_kv
+function vault
 {
     CMD=$1
     shift
