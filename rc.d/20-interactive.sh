@@ -20,6 +20,7 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias lg=lazygit
 alias k8ssetup="pushd ~ ; git archive --format=tar --remote=git@gitlab.oracledatacloud.com:infra-deploy/gitops.git HEAD -- hack/oa_k8s_setup.sh | tar -O -xf - | bash ; popd"
 alias odcdclist="dig srv _ldap._tcp.dc._msdcs.oracledatacloud.com"
 alias valkyriedclist="dig srv _ldap._tcp.dc._msdcs.valkyrie.net"
