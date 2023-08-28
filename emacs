@@ -48,6 +48,10 @@
       )
 )
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
 ;; Set up my backspace if I'm typing on an IBM keyboard
 (setq term (getenv "TERM"))
 (if (and (member term '("aixterm" "hft" "screen" "xterm" "vt100"))
