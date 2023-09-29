@@ -11,6 +11,7 @@ else
     MYPYTHON=$PYTHON
     VIRTUALENVWRAPPER_PYTHON=$PYTHON
 fi
+export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 
 case $(/usr/bin/uname -s) in
     Darwin)

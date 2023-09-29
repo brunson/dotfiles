@@ -26,3 +26,6 @@
 	enabled = true
 [color]
 	ui = auto
+[safe]
+	directory = /home/brunson/appdata
+	directory = /share/Multimedia/appdata
