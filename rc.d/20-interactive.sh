@@ -98,6 +98,7 @@ alias noproxy='unset HTTP_PROXY'
 #alias bksearch='ldapsearch -h ldap1.bluekai.com -D "ebrunson" -b "ou=people,dc=odc,dc=im"'
 alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=valkyrie,dc=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias adsearchsu='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "OU=Privileged,OU=Other,DC=valkyrie,DC=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
+alias adsearchgrp='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "OU=Groups,DC=valkyrie,DC=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
 alias odcgroupsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Groups,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
 alias odcsvcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Service Accounts,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
@@ -108,6 +109,15 @@ alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-
 alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b 'ou=people,dc=bluekai,dc=com' -D 'uid=ebrunson,ou=people,dc=bluekai,dc=com' -w \"\$(cat ~/.bkldap)\" "
 alias bksearch="ldapsearch -H ldap://nsp-2b57a82a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b "dc=odc,dc=im" -D 'cn=Directory Manager' -w  \"\$(cat ~/.bkldap)\" "
 alias orgs="aws --profile mfa_inv_master organizations list-accounts --query 'Accounts[].[Id, Status, Name]' --output text"
+
+function showcert
+{
+    SERVER=$1
+    [[ "$SERVER" == "" ]] && echo "usage: ${FUNCNAME[0]} <servername>" && return 
+
+    echo | openssl s_client -connect $SERVER:443 -servername $SERVER -showcerts | openssl x509 -text -noout
+
+}
 
 function vault
 {
