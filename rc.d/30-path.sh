@@ -2,8 +2,8 @@ debug .bash/path.sh
 
 if [[ $(uname) == "Darwin" ]] ; then
     BREW=/opt/homebrew
-    PYTHON=/Library/Frameworks/Python.framework/Versions/3.11
-    MYPYTHON=/Users/ebrunson/Library/Python/3.11
+    PYTHON=/Library/Frameworks/Python.framework/Versions/3.12
+    MYPYTHON=/Users/ebrunson/Library/Python/3.12
     GOPATH=/usr/local/go
     export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 else
@@ -16,7 +16,7 @@ export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 case $(/usr/bin/uname -s) in
     Darwin)
         debug Darwin
-        DIRS="$GOPATH/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.rd/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $MYPYTHON/bin $PYTHON/bin $HOME/.local/bin $HOME/bin"
+        DIRS="$GOPATH/bin ~/.cargo/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.rd/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $MYPYTHON/bin $PYTHON/bin $HOME/.local/bin $HOME/bin"
         ;;
     *)
         debug not Darwin

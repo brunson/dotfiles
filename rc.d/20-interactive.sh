@@ -1,5 +1,5 @@
 # -*- Mode: shell-script; -*-
-debug .bash/interactive.sh
+# debug .bash/interactive.sh
 
 case "$-" in
     *i*) /bin/stty erase  
@@ -440,5 +440,5 @@ prompt_command()
         echo "[status $prompt_status]"
     fi
 }
-PROMPT_COMMAND=prompt_command
+# PROMPT_COMMAND=prompt_command
 
