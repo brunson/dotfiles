@@ -20,6 +20,8 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias sso="pini ~/.vpnrc sso password | pbcopy"
+alias ora="pini ~/.vpnrc oracle password | pbcopy"
 alias lg=lazygit
 alias k8ssetup="pushd ~ ; git archive --format=tar --remote=git@gitlab.oracledatacloud.com:infra-deploy/gitops.git HEAD -- hack/oa_k8s_setup.sh | tar -O -xf - | bash ; popd"
 alias odcdclist="dig srv _ldap._tcp.dc._msdcs.oracledatacloud.com"
@@ -74,7 +76,7 @@ alias regions="aws --profile mfa_gs ec2 describe-regions --region us-east-1 --qu
 alias ww='workon work'
 alias wo='workon'
 complete -o default -o nospace -F _virtualenvs wo
-alias take='notes take'
+alias take='~/.virtualenvs/notes/bin/notes take'
 alias olab='sudo openvpn --config ~/.openvpn/ericb.ovpn'
 alias osec='sudo openvpn ~/shared/OS-41975-PWK.ovpn &'
 alias odisco='sudo pkill -TERM openvpn'
