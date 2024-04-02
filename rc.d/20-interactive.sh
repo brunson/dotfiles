@@ -102,7 +102,7 @@ alias adsearch='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/
 alias adsearchsu='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "OU=Privileged,OU=Other,DC=valkyrie,DC=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias adsearchgrp='ldapsearch -h p-shared-dc01.valkyrie.net. -D "qldap" -E pr=1000/noprompt -x -b "OU=Groups,DC=valkyrie,DC=net" -o ldif-wrap=no -w $(cat ~/.qldap)'
 alias odcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Employees,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
-alias odcgroupsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Groups,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
+alias odcgroupsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=User Groups,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
 alias odcsvcsearch='ldapsearch -h aps-dc01.oracledatacloud.com. -D "odc\\svc.core.ldap" -E pr=1000/noprompt -x -b "ou=Service Accounts,dc=oracledatacloud,dc=com" -o ldif-wrap=no -w $(cat ~/.odcldap)'
 alias beehivesearch='ldapsearch -x -h ldap.oracle.com -b cn=beehive_groups,cn=groups,dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
 alias ssosearch='ldapsearch -x -h ldap.oracle.com -b dc=oracle,dc=com -E pr=1000/noprompt -o ldif-wrap=no'
