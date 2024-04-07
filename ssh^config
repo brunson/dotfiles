@@ -112,9 +112,6 @@ Host home
     Hostname home.brunson.com
     User brunson
     Port 2222
-    ForwardX11Trusted yes
-    ForwardX11 no
-    IdentityFile ~/.ssh/id_rsa_lima
 
 Host home2
     Hostname home.brunson.com
@@ -219,6 +216,9 @@ Host homep
     Hostname home.brunson.com
     Port 2223
     User brunson
+
+host *.lan
+    user brunson
 
 Host *
     User eric.brunson

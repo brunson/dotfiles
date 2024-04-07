@@ -5,13 +5,13 @@ if [[ $(uname) == "Darwin" ]] ; then
     PYTHON=/Library/Frameworks/Python.framework/Versions/3.12
     MYPYTHON=/Users/ebrunson/Library/Python/3.12
     GOPATH=/usr/local/go
-    export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
+    # export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 else
     PYTHON=$(which python3)
     MYPYTHON=$PYTHON
-    VIRTUALENVWRAPPER_PYTHON=$PYTHON
+    # VIRTUALENVWRAPPER_PYTHON=$PYTHON
 fi
-export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
+# export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 
 case $(/usr/bin/uname -s) in
     Darwin)
@@ -20,7 +20,7 @@ case $(/usr/bin/uname -s) in
         ;;
     *)
         debug not Darwin
-        DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin /usr/local/sbin $HOME/.local/bin $HOME/bin"
+        DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin /usr/local/sbin $HOME/.local/bin $HOME/bin /snap/bin"
         ;;
 esac
 
