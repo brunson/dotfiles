@@ -1,18 +1,52 @@
 ; -*- emacs-lisp -*-
 
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(package-initialize) 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (setq elpy-rpc-virtualenv-path 'current)
+  (advice-add 'python-mode :before 'elpy-enable))
+  ;;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+
+
+(use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode t)
+
+  ;; Set correct python-interpretor
+  (setq pyvenv-post-activate-hooks
+    (list (lambda ()
+        (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python3")))))
+  (setq pyvenv-post-deactivate-hooks
+    (list (lambda ()
+        (setq python-shell-interpreter "python3"))))
+
+  ;; Taken from "https://medium.com/analytics-vidhya/managing-a-python-development-environment-in-emacs-43897fd48c6a"
+  (setq pyvenv-use-alias 't)
+  (setq pyvenv-set-path nil)
+
+  ;;(global-pyenv-mode)
+    (defun pyenv-update-on-buffer-switch (prev curr)
+      (if (string-equal "Python" (format-mode-line mode-name nil nil curr))
+          (pyenv-use-corresponding)))
+    (add-hook 'switch-buffer-functions 'pyenv-update-on-buffer-switch))
+
 (setq suggest-key-bindings 1)
-(setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount '(1
-				  ((shift) . 2)
-				  ((control) . 4)))
-(if (functionp 'global-eldoc-mode) (global-eldoc-mode 0))
+;; (setq mouse-wheel-progressive-speed nil)
+;; (setq mouse-wheel-scroll-amount '(1
+;; 				  ((shift) . 2)
+;; 				  ((control) . 4)))
+;; (if (functionp 'global-eldoc-mode) (global-eldoc-mode 0))
 
 (setq exec-path (append exec-path '("/usr/local/bin")))
-
-(require 'package) ;; You might already have this line
-(package-initialize) 
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 ;add in a local
 (setq load-path 
@@ -71,6 +105,7 @@
  '(electric-pair-mode t)
  '(package-selected-packages
    '(lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell elpy))
+ '(python-interpreter "python3")
  '(show-paren-mode t)
  '(size-indication-mode t)
  ; '(tool-bar-mode nil)
