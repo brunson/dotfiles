@@ -1,6 +1,5 @@
 ; -*- emacs-lisp -*-
 
-(electric-pair-mode t)
 (setq suggest-key-bindings 1)
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount '(1
@@ -12,6 +11,8 @@
 
 (require 'package) ;; You might already have this line
 (package-initialize) 
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 ;add in a local
 (setq load-path 
@@ -66,6 +67,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
+ '(electric-pair-mode t)
  '(package-selected-packages
    '(lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell elpy))
  '(show-paren-mode t)
