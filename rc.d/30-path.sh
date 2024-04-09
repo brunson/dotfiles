@@ -39,4 +39,6 @@ debug PATH=$PATH
 [[ -z "$NEW_PATH" ]] || PATH=$NEW_PATH
 debug PATH=$PATH
 
-. virtualenvwrapper.sh
+if [[ $(uname) == "Darwin" ]] ; then
+    . virtualenvwrapper.sh
+fi
