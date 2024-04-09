@@ -2,21 +2,17 @@ debug .bash/path.sh
 
 if [[ $(uname) == "Darwin" ]] ; then
     BREW=/opt/homebrew
-    PYTHON=/Library/Frameworks/Python.framework/Versions/3.12
-    MYPYTHON=/Users/ebrunson/Library/Python/3.12
+    PYTHON=/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
     GOPATH=/usr/local/go
-    # export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 else
     PYTHON=$(which python3)
-    MYPYTHON=$PYTHON
-    # VIRTUALENVWRAPPER_PYTHON=$PYTHON
 fi
-# export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=$PYTHON
 
 case $(/usr/bin/uname -s) in
     Darwin)
         debug Darwin
-        DIRS="$GOPATH/bin ~/.cargo/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.rd/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $MYPYTHON/bin $PYTHON/bin $HOME/.local/bin $HOME/bin /Users/ebrunson/.cargo/bin"
+        DIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.rd/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $(dirname $PYTHON) $HOME/.local/bin $HOME/bin /Users/ebrunson/.cargo/bin $GOPATH/bin"
         ;;
     *)
         debug not Darwin
@@ -43,4 +39,4 @@ debug PATH=$PATH
 [[ -z "$NEW_PATH" ]] || PATH=$NEW_PATH
 debug PATH=$PATH
 
-[[ -r "$PYTHON/bin/virtualenvwrapper.sh" ]] && . "$PYTHON/bin/virtualenvwrapper.sh"
+. virtualenvwrapper.sh
