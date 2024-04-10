@@ -1,8 +1,11 @@
 ; -*- emacs-lisp -*-
 
-(require 'package) ;; You might already have this line
+(require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/"))
+(require 'use-package)
 (package-initialize) 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -62,7 +65,7 @@
 (if window-system
     (set-frame-height (selected-frame) 60)
   (progn 
-    (server-start)
+    ;; (server-start)
     (define-key ctl-x-map "\C-c" 'nil)
     (define-key ctl-x-map "c" 'kill-emacs)
     (setq x-select-enable-clipboard t)
@@ -104,11 +107,10 @@
  '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
  '(electric-pair-mode t)
  '(package-selected-packages
-   '(lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell elpy))
+   '(elpygen lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell))
  '(python-interpreter "python3")
  '(show-paren-mode t)
  '(size-indication-mode t)
- ; '(tool-bar-mode nil)
  '(transient-mark-mode nil))
 
 (cond
@@ -129,4 +131,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Menlo")))))
+ '(default ((t (:inherit nil :stipple nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "MONO" :family "Andale Mono")))))
