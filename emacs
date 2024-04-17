@@ -17,7 +17,8 @@
   (setq elpy-rpc-virtualenv-path 'current)
   (advice-add 'python-mode :before 'elpy-enable))
   ;;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
-
+(display-fill-column-indicator-mode)
+(column-number-mode)
 
 (use-package pyvenv
   :ensure t
