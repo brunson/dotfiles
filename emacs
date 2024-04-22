@@ -2,13 +2,19 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/"))
-(require 'use-package)
-(package-initialize) 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+	     '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;; Bootstrap 'use-package'
+(eval-after-load 'gnutls
+  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+(setq use-package-always-ensure t)
 
 (use-package elpy
   :ensure t
@@ -108,7 +114,7 @@
  '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
  '(electric-pair-mode t)
  '(package-selected-packages
-   '(elpygen lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell))
+   '(gnu-elpa-keyring-update elpygen lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell))
  '(python-interpreter "python3")
  '(show-paren-mode t)
  '(size-indication-mode t)
