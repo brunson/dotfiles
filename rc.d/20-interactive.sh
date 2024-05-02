@@ -90,7 +90,7 @@ alias clear=/usr/bin/clear
 alias setdate='date `date +%y%m%d%H%m`'
 alias more=less
 alias trcrt="traceroute -q 1 -w 2"
-alias teams='curl -s http://bonzai-api-svc.prd.valkyrie.net/api/v1/teams | jq . | less'
+alias teams='curl -s https://teams.production-19-odc-iad.k8s.oracledatacloud.com/api/v1/teams | jq . | less'
 alias scan='sudo nmap -sS -sV -vv -T5 -Pn --script banner --open'
 alias sweep='sudo nmap -Sn'
 alias proxy='export HTTP_PROXY=http://www-proxy-brmdc.us.oracle.com'
