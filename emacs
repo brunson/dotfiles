@@ -114,7 +114,7 @@
  '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
  '(electric-pair-mode t)
  '(package-selected-packages
-   '(gnu-elpa-keyring-update elpygen lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell))
+   '(elpy gnu-elpa-keyring-update lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell))
  '(python-interpreter "python3")
  '(show-paren-mode t)
  '(size-indication-mode t)

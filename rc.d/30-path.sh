@@ -7,7 +7,7 @@ if [[ $(uname) == "Darwin" ]] ; then
 else
     PYTHON=$(which python3)
 fi
-export VIRTUALENVWRAPPER_PYTHON=$PYTHON
+# export VIRTUALENVWRAPPER_PYTHON=$PYTHON
 
 case $(/usr/bin/uname -s) in
     Darwin)
