@@ -40,7 +40,7 @@ alias tandecode="sed -e 's/->/\n/g' <<.EOF"
 alias ksp='kubectl --context us-phx-c --namespace security-prod'
 alias kst='kubectl --context us-phx-c --namespace security-test'
 alias ksd='kubectl --context us-phx-c --namespace security-dev'
-alias sumcol='python -c "import sys; print(sum(int(l) for l in sys.stdin))"'
+alias sumcol='python3 -c "import sys; print(sum(int(l) for l in sys.stdin))"'
 alias qbrew='HOMEBREW_NO_AUTO_UPDATE=1 brew'
 alias wx="curl wttr.in/Broomfield"
 alias tansnmp='snmpwalk -v 3 -u tanuser -A "q\$h6xqfODI50" -a sha -t 10 -x AES -l authnoPriv  10.196.14.243'
