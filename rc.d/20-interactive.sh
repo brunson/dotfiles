@@ -20,6 +20,7 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias ccttp="bastion create --nowait && bastion connect"
 alias ssop="pini ~/.vpnrc sso password | pbcopy"
 alias k8ssetup="pushd ~ ; git archive --format=tar --remote=git@gitlab.oracledatacloud.com:infra-deploy/gitops.git HEAD -- hack/oa_k8s_setup.sh | tar -O -xf - | bash ; popd"
 alias odcdclist="dig srv _ldap._tcp.dc._msdcs.oracledatacloud.com"
@@ -49,7 +50,9 @@ alias dx="docker exec -ti"
 alias signpython='codesign -f -s - $(which python)'
 alias dubuntu="docker container run --rm -it -v /Users/eric.brunson:/home/eric.brunson -v /:/host -u 616615499 local"
 alias dclean="docker container ls -aq | xargs docker container rm"
+alias pclean="podman container ls -aq | xargs podman container rm"
 alias dprune="docker image prune"
+alias pprune="podman image prune"
 alias dscrub="dclean ; dprune"
 alias argoadmin='kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo'
 alias k=kubectl
