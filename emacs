@@ -16,15 +16,18 @@
 
 (if window-system
     (progn 
+      (set-frame-size (selected-frame) 130 60)
+      (set-frame-position (selected-frame) 200 40)
       (server-start)
       (define-key ctl-x-map "\C-c" 'nil)
       (define-key ctl-x-map "c" 'kill-emacs)
       (setq x-select-enable-clipboard t)
       (setq interprogram-paste-function 'x-selection-value)
-      ; (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+					; (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
       (global-set-key (kbd "<M-up>") 'scroll-down-command)
       (global-set-key (kbd "<M-down>") 'scroll-up-command)
-      ))
+      )
+  )
 
 (require 'yaml-mode)
 
@@ -47,6 +50,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(deeper-blue))
  '(package-selected-packages
    '(lsp-mode pyvenv tramp-theme python-mode python-docstring py-autopep8 magit go-mode flycheck exec-path-from-shell elpy))
  '(show-paren-mode t)
