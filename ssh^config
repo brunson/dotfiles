@@ -1,139 +1,54 @@
-
 GSSAPIAuthentication no
 StrictHostKeyChecking no
 ForwardAgent yes
 ServerAliveInterval 90
+LogLevel error
+Compression yes
+ForwardX11Trusted no
+PreferredAuthentications=publickey
 
-# OCI uses ODC AD Account
-## us-phoenix-1 V1
-Host *.prd.us-phx.odc.im !bastion.isv* 10.65.*
-   User ebrunson
-   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
- 
-Host *.mc.us-phx.odc.im mc.us-phx deathstar.sh.odc.im !bastion.isv* 10.64.*
-   User ebrunson
-   ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
- 
-## us-phoenix-1 V2
-Host 10.194.* 10.196.* *phx1.oracledatacloud.com *phxshared1.oracledatacloud.com !bastion-62-*
-  ProxyCommand ssh bastion-phx.oracledatacloud.com -W %h:%p
- 
-## us-ashburn-1 V2
-Host 10.195.* 10.197.* *iad1.oracledatacloud.com *iadshared1.oracledatacloud.com !bastion-62-*
-  ProxyCommand ssh bastion-iad.oracledatacloud.com -W %h:%p
+Host bitbucket.oci.oraclecorp.com
+    IdentityFile ~/.ssh/id_ed_bitbucket
 
-Host phx bastion-phx.oracledatacloud.com
-    User eric.brunson
-    Hostname bastion-phx.oracledatacloud.com
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/id_rsa
+Host vpc1
+    Hostname ztb.bastion.us-ashburn-1.oci.oraclecloud.com
+    User ocid1.bastionsession.oc1.iad.amaaaaaaftkbykiaxibkq66mzlvrlfrucep5eubs5wes666zjiyjioqh2jmq
+    IdentityFile ~/.ssh/id_vpc1
+    ForwardAgent yes
 
-Host iad bastion-iad.oracledatacloud.com
-    User eric.brunson
-    Hostname bastion-iad.oracledatacloud.com
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/id_rsa
+Host tao
+    Hostname 10.121.164.67
+    User oracle.eric.brunson
+    Port 22
+    # ProxyJump ocid1.bastionsession.oc1.iad.amaaaaaaftkbykiaxibkq66mzlvrlfrucep5eubs5wes666zjiyjioqh2jmq@vpc1
+    ProxyCommand ssh -A -p 22 ocid1.bastionsession.oc1.iad.amaaaaaaftkbykiaz43r377liiomrhqvb667ymfth7jmm5eu47ytjfiiqxma@ztb.bastion.us-ashburn-1.oci.oraclecloud.com -s %h:%p
+    ForwardAgent yes
 
 Host otw
     Hostname narnia.labs.overthewire.org
     Port 2226
 
-Host moat
-    # Hostname gateway.moat.com
-    Hostname 54.144.241.207
-    User ericbrunson
-
 Host github.com
-    IdentityFile /Users/ebrunson/.ssh/id_rsa_github
+    IdentityFile ~/.ssh/id_rsa_github
     User git
-
-Host kbdev
-    Hostname 172.31.1.141
-    ForwardX11 no
-
-Host kbprd
-    Hostname 172.31.192.235
-    ForwardX11 no
-
-Host gitlab.oracledatacloud.com
-    User git
-
-Host pen
-    User eric.brunson
-
-Host labkali-old
-    User root
-    Hostname 10.80.249.57
-    Port 2223
-    IdentityFile ~/.ssh/id_rsa_su
-
-Host labkali
-    User root
-    Hostname 10.80.249.57
-    Port 30000
-    IdentityFile ~/.ssh/id_rsa_su
-
-Host vpnkali
-    User root
-    Hostname 192.168.0.24
-    IdentityFile ~/.ssh/id_rsa_su
-
-Host labproxy
-    User root
-    DynamicForward 1081
-    Hostname 10.80.249.57
-    Port 2024
-
-Host ssecops
-    User secops
-    Hostname secops
-    IdentityFile ~/.ssh/id_rsa_su
-
-Host term-client
-    User ubuntu
-    Hostname 10.100.11.168
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/id_rsa_sec
-
-Host simshady
-    User ericb
-    Hostname 172.16.222.10
-    IdentityFile ~/.ssh/id_rsa_su
-
-Host byip
-    Hostname 71.218.125.91
-    User brunson
-    Port 2222
-    ForwardX11Trusted yes
-    ForwardX11 yes
-    IdentityFile ~/.ssh/id_rsa_lima
-
-Host home
-    Hostname home.brunson.com
-    User brunson
-    Port 2222
-    ForwardX11Trusted yes
-    ForwardX11 no
-    IdentityFile ~/.ssh/id_rsa_lima
-
-Host home2
-    Hostname home.brunson.com
-    User brunson
-    Port 2224
-    ForwardX11Trusted yes
-    ForwardX11 no
-    IdentityFile ~/.ssh/id_rsa_lima
 
 Host proxy
     Hostname home.brunson.com
     DynamicForward 1081
     User brunson
-    Port 2222
+    Port 2187
     IdentityFile ~/.ssh/id_rsa_lima
     ForwardX11 no
 
 Host papa
+    # Hostname papa.lan
+    Hostname 192.168.86.213
     User brunson
+
+Host nova
+    # Hostname papa.lan
+    Hostname 192.168.86.36
+    User nova
 
 Host hashbang
     HostName da1.hashbang.sh
@@ -141,83 +56,67 @@ Host hashbang
     User brunson
     IdentityFile /home/brunson/.ssh/id_rsa_hashbang
 
-Host vps
+Host lima
+    # Hostname home.brunson.com
+    # Port 2222
+    User brunson
+
+Host home
+    Hostname home.brunson.com
+    Port 2187
+    User brunson
+
+Host homew
+    Hostname home.brunson.com
+    Port 2223
+    User brunson
+
+Host opc
+    Hostname 129.146.129.243
+    User opc
+
+Host uel
     Hostname vps.brunson.com
     User brunson
-    IdentityFile ~/.ssh/id_rsa_lima
-    Port 2222
 
-Host *.qwest.net
-    User brunson
-    Port 2222
-    ForwardX11 no
+Host bati
+    Hostname 192.168.86.174
+    User root
 
-Host brunson.com
-    User brunson
-    ForwardX11 no
-
-Host aws-*
-    User eric.brunson
-    ForwardX11 no
-
-Host *-aws-*
-    User eric.brunson
-    ForwardX11 no
-
-Host alpha*
-    #Hostname home.brunson.com
-    User admin
-    Port 2223
-    ForwardX11 no
-
-Host nas
-    Hostname 10.135.127.190
-    User admin
-    Port 2223
-    ForwardX11 no
-
-Host lima*
+Host romeo
     User brunson
 
-Host hackathon
-    Hostname 10.0.30.218
-    User eric.brunson
-    IdentityFile ~/.ssh/id_rsa_su
+Host wireguard
+    Hostname whiskey
+    User root
 
-Host git-codecommit.*
-    User APKAJEZF72GX4OAIGMIA
-    IdentityFile ~/.ssh/id_rsa_codecommit
-
-Host usdev
-    Hostname dev-use1a-pr-09-user_self_service-0001.dev-infra.valkyrie.net
-
-Host usprd
-    Hostname prd-use1a-pr-09-user_self_service-0001.prd-infra.valkyrie.net
-
-Host homel
-    Hostname home.brunson.com
-    Port 2222
+Host fox
+    Hostname foxtrot.lan
     User brunson
 
-Host tanftp
-    Hostname tanium.oracledatacloud.com
-    User tancopy
-    IdentityFile ~/.ssh/id_tanadmin_rsa
+Host vm
+    Hostname 192.168.86.145
+    user root
 
-Host tanium
-    Hostname tanium.oracledatacloud.com
-    User tanadmin
-    IdentityFile ~/.ssh/id_tanadmin_rsa
+Host dev
+    Hostname 192.168.86.107
+    user root
 
-Host tandev
-    Hostname 10.224.220.96
-    User tanadmin
-    IdentityFile ~/.ssh/id_tandev_rsa
+Host whiskey
+    User brunson
 
+Host *.lan
+    User brunson
 
-Host homep
-    Hostname home.brunson.com
-    Port 2223
+Host homew
+    User brunson
+    ProxyJump homel
+
+Host wgpapa
+    Host 10.86.0.1
+    User brunson
+
+Host *.wg
     User brunson
 
 Host *
