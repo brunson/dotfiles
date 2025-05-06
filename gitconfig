@@ -11,6 +11,7 @@
   cleanup = "!git branch --merged | grep  -v '\\*\\|main\\|develop' | xargs -n 1 git branch -d"
   amend = commit --amend -CHEAD
   bdiff = log --left-right --graph --cherry-pick --pretty='%C(auto) %h %d%Cblue %ad%Cred %aN %Creset%s'
+  cdif = diff --word-diff=color --word-diff-regex=.
   chhist = log --follow -p -- 
   stash-untracked = "!f() {  \
     git stash;       \
@@ -29,3 +30,5 @@
 [safe]
 	directory = /home/brunson/appdata
 	directory = /share/Multimedia/appdata
+[http "https://oci.private.devops.scmservice.us-phoenix-1.oci.oracleiaas.com"]
+        sslVerify = false

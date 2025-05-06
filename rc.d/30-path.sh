@@ -15,7 +15,7 @@ fi
 case $(/usr/bin/uname -s) in
     Darwin)
         debug Darwin
-        DIRS="$GOPATH/bin ~/.cargo/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.rd/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $MYPYTHON/bin $PYTHON/bin $HOME/.local/bin $HOME/bin"
+        DIRS="$GOPATH/bin ~/.cargo/bin /bin /usr/bin /sbin /usr/sbin /usr/local/bin $HOME/.rd/bin $BREW/bin $BREW/opt/coreutils/libexec/gnubin $MYPYTHON/bin $PYTHON/bin $HOME/.local/bin $HOME/bin $HOME/.rd/bin"
         ;;
     *)
         debug not Darwin

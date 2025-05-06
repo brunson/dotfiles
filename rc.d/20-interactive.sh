@@ -20,6 +20,7 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
     source <(kubectl completion bash)
 fi
 
+alias scm-ssh='/Users/ebrunson/.ssh/scm-script.sh'
 alias ccttp="bastion create --nowait && bastion connect"
 alias ssop="pini ~/.vpnrc sso password | pbcopy"
 alias k8ssetup="pushd ~ ; git archive --format=tar --remote=git@gitlab.oracledatacloud.com:infra-deploy/gitops.git HEAD -- hack/oa_k8s_setup.sh | tar -O -xf - | bash ; popd"
@@ -112,6 +113,11 @@ alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-
 alias bksearch="ldapsearch -H ldap://lct-d8f9639a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b 'ou=people,dc=bluekai,dc=com' -D 'uid=ebrunson,ou=people,dc=bluekai,dc=com' -w \"\$(cat ~/.bkldap)\" "
 alias bksearch="ldapsearch -H ldap://nsp-2b57a82a.ad1.prd.us-phx.odc.im -o ldif-wrap=no -x -b "dc=odc,dc=im" -D 'cn=Directory Manager' -w  \"\$(cat ~/.bkldap)\" "
 alias orgs="aws --profile mfa_inv_master organizations list-accounts --query 'Accounts[].[Id, Status, Name]' --output text"
+
+function tz
+{
+    TZ=$1 date
+}
 
 function showcert
 {
