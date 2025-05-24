@@ -21,6 +21,8 @@ if [ -x "$(which kubectl 2>&-)" ] ; then
 fi
 
 alias scm-ssh='/Users/ebrunson/.ssh/scm-script.sh'
+alias authtok='oci session authenticate --region us-ashburn-1 --profile-name'
+alias pullrecs='time ssh logging-access "gzip -9 < /tmp/assuranceops/recordings/cache.sqlite3" | dd status=progress | gzip -d -c > cache.sqlite3-backup && cp cache.sqlite3-backup cache.sqlite3'
 alias ccttp="bastion create --nowait && bastion connect"
 alias ssop="pini ~/.vpnrc sso password | pbcopy"
 alias k8ssetup="pushd ~ ; git archive --format=tar --remote=git@gitlab.oracledatacloud.com:infra-deploy/gitops.git HEAD -- hack/oa_k8s_setup.sh | tar -O -xf - | bash ; popd"
