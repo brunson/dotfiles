@@ -58,9 +58,6 @@
 	json-mode lsp-mode lsp-treemacs lsp-ui magit py-autopep8
 	python-docstring python-mode pyvenv spacemacs-theme
 	tramp-theme treemacs vertico vundo yaml-mode))
-   '(elpy esbonio exec-path-from-shell flycheck go-mode lsp-mode magit
-	  py-autopep8 python-docstring python-mode pyvenv tabbar
-	  tramp-theme))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(transient-mark-mode nil))
