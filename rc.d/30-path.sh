@@ -2,8 +2,8 @@ debug .bash/path.sh
 
 if [[ $(uname) == "Darwin" ]] ; then
     BREW=/opt/homebrew
-    PYTHON=/Library/Frameworks/Python.framework/Versions/3.12
-    MYPYTHON=/Users/ebrunson/Library/Python/3.12
+    PYTHON=/Library/Frameworks/Python.framework/Versions/3.13
+    MYPYTHON=/Users/ebrunson/Library/Python/3.13
     GOPATH=/usr/local/go
     export VIRTUALENVWRAPPER_PYTHON=$PYTHON/bin/python3
 else
